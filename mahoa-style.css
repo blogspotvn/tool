@@ -6,9 +6,7 @@ body {
      font: normal normal 13px Arial,sans-serif;
      transition: .4s;
 }
- body.loading .loading-modal {
-     display:block 
-}
+
  .container {
      width: 500px;
      margin: 50px auto;
