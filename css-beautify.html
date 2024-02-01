@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 
@@ -7,69 +6,76 @@
     <title>Làm đẹp CSS</title>
     <link href='/images/favicon.ico' rel='icon' type='image/x-icon'>
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    
+
     <script src="/js/jquery.min.js"></script>
     <script src="/js/clipboard.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 
-    <style type="text/css">#fromeditor,#toeditor{height:275px;border:1px solid #DDD;border-radius:4px;border-bottom-right-radius:0;margin-top:5px}</style>
+    <style type="text/css">
+        #fromeditor,#toeditor{height:275px;border:1px solid #DDD;border-radius:4px;border-bottom-right-radius:0;margin-top:5px}
+    </style>
 </head>
 
 <body>
-            
+
     <div class="container">
         <div class="row">
             <h1>Format CSS code</h1>
+        </div>
+        <div class="row">
+            <div id="fromeditor"></div>
+            <div class="row">
+                <div class="col-md-3">
+                    <button id="convert" class="btn btn-primary" style="margin:10px 0">Beautifier</button>
+                    <button id="reset" class="btn btn-reset" style="margin:10px 0">Reset</button>
+                </div>
             </div>
-        <div class="row"><div id="fromeditor"></div><div class="row"><div class="col-md-3">
-            <button id="convert" class="btn btn-primary" style="margin:10px 0">Beautifier</button>
-            <button id="reset" class="btn btn-reset" style="margin:10px 0">Reset</button>
-        </div></div><div id="toeditor"></div>
+            <div id="toeditor"></div>
             <button id="copy" class="btn btn-copy" style="margin:10px 0">Copy</button>
-        </div></div>
-        <div class="copyright-container">
-      <p class="text-center ">©
-        <span id='current-year'></span>
-<script type='text/javascript'>
-function getCurrentYear() {
-var d = new Date();
-return d.getFullYear();
-}
-el = document.getElementById('current-year');
-el.innerHTML = getCurrentYear();
-</script>
-        by
-        <a href="https://www.blogspotvn.net/">BlogspotVN.Net</a>
-      </p>
+        </div>
+    </div>
+    <div class="copyright-container">
+        <p class="text-center ">©
+            <span id='current-year'></span>
+            <script type='text/javascript'>
+                function getCurrentYear() {
+                var d = new Date();
+                return d.getFullYear();
+                }
+                el = document.getElementById('current-year');
+                el.innerHTML = getCurrentYear();
+            </script>
+            by
+            <a href="https://www.blogspotvn.net/">BlogspotVN.Net</a>
+        </p>
     </div>
     <script>
-    var _0x5f58=['click','#convert','css','function','setValue','fromeditor','getSession','setMode','ace/mode/css','setShowPrintMargin','edit','toeditor','ready'];(function(_0x3a633b,_0x571692){var _0xfd7102=function(_0x4c9c06){while(--_0x4c9c06){_0x3a633b['push'](_0x3a633b['shift']());}};_0xfd7102(++_0x571692);}(_0x5f58,0x1ed));var _0x3db3=function(_0x20f596,_0x4fe43){_0x20f596=_0x20f596-0x0;var _0x16588b=_0x5f58[_0x20f596];return _0x16588b;};$(document)[_0x3db3('0x0')](function(){$(document)['on'](_0x3db3('0x1'),_0x3db3('0x2'),function(){if(typeof vkbeautify[_0x3db3('0x3')]===_0x3db3('0x4')){var _0x12adaa=_0xda92fe['getValue']();var _0x37c500=vkbeautify['css'](_0x12adaa,'');_0x3f566c[_0x3db3('0x5')](_0x37c500);}});var _0xda92fe=ace['edit'](_0x3db3('0x6'));_0xda92fe[_0x3db3('0x7')]()[_0x3db3('0x8')](_0x3db3('0x9'));_0xda92fe[_0x3db3('0xa')](![]);var _0x3f566c=ace[_0x3db3('0xb')](_0x3db3('0xc'));_0x3f566c[_0x3db3('0x7')]()[_0x3db3('0x8')](_0x3db3('0x9'));_0x3f566c['setShowPrintMargin'](![]);});
+        var _0x5f58=['click','#convert','css','function','setValue','fromeditor','getSession','setMode','ace/mode/css','setShowPrintMargin','edit','toeditor','ready'];(function(_0x3a633b,_0x571692){var _0xfd7102=function(_0x4c9c06){while(--_0x4c9c06){_0x3a633b['push'](_0x3a633b['shift']());}};_0xfd7102(++_0x571692);}(_0x5f58,0x1ed));var _0x3db3=function(_0x20f596,_0x4fe43){_0x20f596=_0x20f596-0x0;var _0x16588b=_0x5f58[_0x20f596];return _0x16588b;};$(document)[_0x3db3('0x0')](function(){$(document)['on'](_0x3db3('0x1'),_0x3db3('0x2'),function(){if(typeof vkbeautify[_0x3db3('0x3')]===_0x3db3('0x4')){var _0x12adaa=_0xda92fe['getValue']();var _0x37c500=vkbeautify['css'](_0x12adaa,'');_0x3f566c[_0x3db3('0x5')](_0x37c500);}});var _0xda92fe=ace['edit'](_0x3db3('0x6'));_0xda92fe[_0x3db3('0x7')]()[_0x3db3('0x8')](_0x3db3('0x9'));_0xda92fe[_0x3db3('0xa')](![]);var _0x3f566c=ace[_0x3db3('0xb')](_0x3db3('0xc'));_0x3f566c[_0x3db3('0x7')]()[_0x3db3('0x8')](_0x3db3('0x9'));_0x3f566c['setShowPrintMargin'](![]);});
     </script>
     <script src="/js/ace.js"></script>
     <script src="/js/vkbeautify.js"></script>
     <script>
-var fromEditor = ace.edit('fromeditor');
-var toEditor = ace.edit('toeditor');
-document.getElementById('reset').addEventListener('click', function () {
-    fromEditor.setValue('');
-    toEditor.setValue('');
-});
-document.getElementById('copy').addEventListener('click', function () {
-    var toEditorContent = toEditor.getValue();
-
-    var textarea = document.createElement('textarea');
-    textarea.value = toEditorContent;
-    document.body.appendChild(textarea);
-
-    textarea.select();
-    document.execCommand('copy');
-
-    document.body.removeChild(textarea);
-
-    alert('Nội dung đã được sao chép vào clipboard.');
-});
-
-</script>
+        var fromEditor = ace.edit('fromeditor');
+        var toEditor = ace.edit('toeditor');
+        document.getElementById('reset').addEventListener('click', function () {
+            fromEditor.setValue('');
+            toEditor.setValue('');
+        });
+        document.getElementById('copy').addEventListener('click', function () {
+            var toEditorContent = toEditor.getValue();
+        
+            var textarea = document.createElement('textarea');
+            textarea.value = toEditorContent;
+            document.body.appendChild(textarea);
+        
+            textarea.select();
+            document.execCommand('copy');
+        
+            document.body.removeChild(textarea);
+        
+            alert('Nội dung đã được sao chép vào clipboard.');
+        });
+    </script>
 </body>
 
 </html>
