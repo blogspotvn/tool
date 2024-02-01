@@ -1,34 +1,24 @@
-function updateLineNumbersAndHeight() {
-  const input = document.getElementById('inputHtml');
-  const lineNumbers = document.getElementById('inputLineNumbers');
-  const lineCount = input.value.split('\n').length;
-  let numbersContent = '';
+function updateLineNumbersAndHeight(textarea, lineNumbersId) {
+  const lineCount = textarea.value.split("\n").length;
+  const lineNumbersElement = document.getElementById(lineNumbersId);
+  let lineNumbersHtml = "";
+  
   for (let i = 1; i <= lineCount; i++) {
-    numbersContent += `${i}\n`;
+    lineNumbersHtml += i + "\n";
   }
-  lineNumbers.textContent = numbersContent;
-  lineNumbers.style.height = `${input.scrollHeight}px`;
-  input.style.height = ''; // Reset height
-  input.style.height = `${input.scrollHeight}px`;
-}
 
-function updateOutputLineNumbersAndHeight() {
-  const output = document.getElementById('outputHtml');
-  const lineNumbers = document.getElementById('outputLineNumbers');
-  const lineCount = output.value.split('\n').length;
-  let numbersContent = '';
-  for (let i = 1; i <= lineCount; i++) {
-    numbersContent += `${i}\n`;
-  }
-  lineNumbers.textContent = numbersContent;
-  lineNumbers.style.height = `${output.scrollHeight}px`;
+  lineNumbersElement.textContent = lineNumbersHtml;
+  lineNumbersElement.style.height = `${textarea.scrollHeight}px`; // Điều chỉnh chiều cao
 }
 
 function beautifyHtml() {
   const inputHtml = document.getElementById('inputHtml').value;
-  const outputHtml = document.getElementById('outputHtml');
-  outputHtml.value = html_beautify(inputHtml, { indent_size: 2, space_in_empty_paren: true });
-  updateOutputLineNumbersAndHeight();
+  // Sử dụng thư viện làm đẹp HTML ở đây, ví dụ: html_beautify(inputHtml)
+  const outputHtml = html_beautify(inputHtml); // Giả sử bạn có hàm html_beautify
+  document.getElementById('outputHtml').value = outputHtml;
+
+  // Cập nhật số dòng cho output
+  updateLineNumbersAndHeight(document.getElementById('outputHtml'), 'outputLineNumbers');
 }
 
 function resetFields() {
@@ -36,10 +26,4 @@ function resetFields() {
   document.getElementById('outputHtml').value = '';
   document.getElementById('inputLineNumbers').textContent = '';
   document.getElementById('outputLineNumbers').textContent = '';
-  updateLineNumbersAndHeight();
-  updateOutputLineNumbersAndHeight();
 }
-
-// Initial call to set line numbers
-updateLineNumbersAndHeight();
-updateOutputLineNumbersAndHeight();
