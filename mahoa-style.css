@@ -16,7 +16,7 @@ body {
  .check, .button-group{
      padding: 10px 0;
 }
- .button, . button-red{
+ .button, .button-red{
      border-radius: 3px;
      background: #005b53;
      color: #fff;
@@ -26,7 +26,7 @@ body {
      margin-bottom: 5px;
      border: 0;
 }
- . button-red{
+ .button-red{
     background:#dd6666;
 }
  #codes {
