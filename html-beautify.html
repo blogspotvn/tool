@@ -6,25 +6,91 @@
 <title>HTML Beautifier Tool</title>
 <link rel="shortcut icon" href="/images/favicon.ico">
 <style>
-  body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
-  textarea { width: 100%; height: 200px; margin-bottom: 10px; }
-  button { padding: 10px 20px; }
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #005b53; /* Dark green background */
+    color: #ffffff; /* White text */
+  }
+  textarea {
+    width: calc(100% - 40px);
+    height: 200px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #ffffff; /* White background for textarea */
+    color: #333333; /* Dark text for better readability */
+    border: none;
+    outline: none;
+    resize: vertical;
+    box-sizing: border-box;
+  }
+  button {
+    padding: 10px 20px;
+    margin-right: 10px;
+    border: none;
+    background-color: #ca252b; /* Red background for buttons */
+    color: #ffffff; /* White text on buttons */
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #e62e34; /* Lighter red for hover effect */
+  }
+  #lineNumbers {
+    padding: 10px;
+    background-color: #eeeeee; /* Light background for line numbers */
+    color: #333333; /* Dark text for line numbers */
+    text-align: right;
+    border-right: 1px solid #ddd; /* Separator line */
+  }
+  .container {
+    display: flex;
+  }
+  .container textarea {
+    flex-grow: 1;
+  }
 </style>
 </head>
 <body>
 
 <h2>HTML Beautifier Tool</h2>
 
-<textarea id="inputHtml" placeholder="Paste your HTML here..."></textarea>
+<div class="container">
+  <div id="lineNumbers">1</div>
+  <textarea id="inputHtml" placeholder="Paste your HTML here..."></textarea>
+</div>
+
 <button onclick="beautifyHtml()">Beautify HTML</button>
+<button onclick="resetForm()">Reset</button>
+
 <textarea id="outputHtml" placeholder="Formatted HTML will appear here..." readonly></textarea>
 
-<script src="/js/beautify-html.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/js-beautify/1.14.0/beautify-html.js"></script>
 <script>
+  function updateLineNumbers(textarea) {
+    const lineNumbers = textarea.value.split('\n').length;
+    const lineNumbersDiv = document.getElementById('lineNumbers');
+    lineNumbersDiv.innerHTML = '';
+    for (let i = 1; i <= lineNumbers; i++) {
+      lineNumbersDiv.innerHTML += i + '<br>';
+    }
+  }
+
+  document.getElementById('inputHtml').addEventListener('input', function() {
+    updateLineNumbers(this);
+  });
+
   function beautifyHtml() {
     var html = document.getElementById('inputHtml').value;
     var beautifiedHtml = html_beautify(html, { indent_size: 2, space_in_empty_paren: true });
     document.getElementById('outputHtml').value = beautifiedHtml;
+    updateLineNumbers(document.getElementById('inputHtml'));
+  }
+
+  function resetForm() {
+    document.getElementById('inputHtml').value = '';
+    document.getElementById('outputHtml').value = '';
+    document.getElementById('lineNumbers').innerHTML = '1';
   }
 </script>
 
