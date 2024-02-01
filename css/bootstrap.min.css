@@ -91,3 +91,12 @@ label {
     margin-bottom: 5px;
     font-weight: 700;
 }
+.col-sm-4{
+    width: 60%;
+    float: left;
+}
+.col-sm-8{
+    width: 38%;
+    float: left;
+    margin-left: 2%;
+}
