@@ -22,11 +22,12 @@
                 <div class="col-sm-4 col-md-8 col-lg-8">
                     <div class="form-group"><textarea class="form-control" name="code" id="code" rows="25" placeholder="Enter the Javascript you want to Beautify..."></textarea></div>
                     <a id="cap" href="javascript:beautify();" class="btn btn-primary btn-large listen"><i class="icon-indent-left icon-white"></i>Format Code</a>
-                    <!-- Nút Reset -->
-                <button id="resetBtn" class="btn btn-secondary btn-large listen" style="display:none;" onclick="resetTextarea();"><i class="icon-refresh icon-white"></i>Reset</button>
-                
-                <!-- Nút Copy -->
-                <button id="copyBtn" class="btn btn-success btn-large listen" style="display:none;" onclick="copyToClipboard();"><i class="icon-copy icon-white"></i>Copy</button>
+<!-- Nút Reset -->
+<button id="resetBtn" class="btn btn-primary" style="display:none;" onclick="resetTextarea();"><i class="icon-refresh icon-white"></i>Reset</button>
+
+<!-- Nút Copy -->
+<button id="copyBtn" class="btn btn-secondary" style="display:none;" onclick="copyToClipboard();"><i class="icon-copy icon-white"></i>Copy</button>
+
                 </div>
                 <div
                     class="col-sm-8 col-md-4 col-lg-4"><select name="tabsize" id="tabsize" class="form-control"><option value="1">Indent with a tab character</option><option value="2">Indent with 2 spaces</option><option value="3">Indent with 3 spaces</option><option value="4">Indent with 4 spaces</option><option value="8">Indent with 8 spaces</option></select><br/>
