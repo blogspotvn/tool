@@ -1,30 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>HTML Beautifier Tool</title>
-<link rel="stylesheet" href="/css/beautify-html-styles.css">
+    <meta charset="utf-8">
+    <title>HTML Beautifier &amp; Formatter</title>
+    <link href='/images/favicon.ico' rel='icon' type='image/x-icon'>
+    <link href="/js/bootstrap.min.css" rel="stylesheet" type="text/css">
+    
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/clipboard.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <style type="text/css">#fromeditor,#toeditor{height:275px;border:1px solid #DDD;border-radius:4px;border-bottom-right-radius:0;margin-top:5px}</style>
 </head>
+
 <body>
+    <div class="container"><h3><b>Format HTML code</b></h3><hr><div class="row"><div id="fromeditor"></div><div class="row"><div class="col-md-3"><button id="convert" class="btn btn-primary" style="margin:10px 0">Beautifier</button></div></div><div id="toeditor"></div><hr></div></div>
+    <script>
+var actionList = ['getValue', 'edit', 'fromeditor', 'getSession', 'ace/mode/html', 'setShowPrintMargin', 'ready', 'click', 'function'];
 
-<h2>HTML Beautifier Tool</h2>
+(function (arr, val) {
+    var shiftItems = function (count) {
+        while (--count) {
+            arr.push(arr.shift());
+        }
+    };
+    shiftItems(++val);
+})(actionList, 0xcc);
 
-<div class="container">
-  <pre id="inputLineNumbers" class="line-numbers"></pre>
-  <textarea id="inputHtml" class="html-input" oninput="updateLineNumbersAndHeight()"></textarea>
-</div>
+function documentReady() {
+    $(document).on('ready', function () {
+        $(document).on('click', '#convert', function () {
+            if (typeof html_beautify === 'function') {
+                var editorContent = editor.getSession().getValue();
+                var beautifiedHTML = html_beautify(editorContent, '');
+                toEditor.setValue(beautifiedHTML);
+            }
+        });
 
-<button onclick="beautifyHtml()">Beautify HTML</button>
-<button onclick="resetFields()">Reset</button>
+        var editor = ace.edit('editor');
+        editor.setSession(ace.createEditSession('', 'ace/mode/html'));
+        editor.setShowPrintMargin(false);
 
-<div class="container">
-  <pre id="outputLineNumbers" class="line-numbers"></pre>
-  <textarea id="outputHtml" class="html-output" readonly oninput="updateOutputLineNumbersAndHeight()"></textarea>
-</div>
+        var toEditor = ace.edit('toeditor');
+        toEditor.getSession().setMode('ace/mode/html');
+        toEditor.setShowPrintMargin(false);
+    });
+}
 
-<script src="/js/beautify-html.js"></script>
-<script src="/js/beautify-html-script.js"></script>
-
+documentReady();
+    </script>
+    <script src="/js/ace.js"></script>
+    <script src="/js/html_beautify.js"></script>
 </body>
+
 </html>
