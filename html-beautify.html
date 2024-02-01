@@ -1,101 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>HTML Beautifier</title>
-    <link rel="shortcut icon" href="/images/favicon.ico">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2;
-        }
-
-        h1 {
-            text-align: center;
-            background-color: #333;
-            color: #fff;
-            padding: 10px;
-            margin: 0;
-        }
-
-        #container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-        }
-
-        textarea {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            resize: vertical;
-        }
-
-        button {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: #333;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #555;
-        }
-
-        h2 {
-            margin-top: 20px;
-        }
-
-        pre {
-            background-color: #f5f5f5;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            white-space: pre-wrap;
-            overflow: auto;
-        }
-
-        div {
-            text-align: right;
-            margin-top: 10px;
-            font-style: italic;
-        }
-    </style>
-    <script src="/js/beautify-html.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Beautifier Tool</title>
+<style>
+  body { font-family: Arial, sans-serif; margin: 0; padding: 20px; }
+  textarea { width: 100%; height: 200px; margin-bottom: 10px; }
+  button { padding: 10px 20px; }
+</style>
 </head>
 <body>
-    <h1>HTML Beautifier</h1>
-    <div id="container">
-        <textarea id="inputHtml" rows="10" cols="80"></textarea>
-        <button onclick="beautifyHtml()">Làm đẹp</button>
-        <h2>Kết quả sau khi làm đẹp:</h2>
-        <pre id="outputHtml"></pre>
-        <div>Số dòng: <span id="lineCount">0</span></div>
-    </div>
 
-    <script>
-        function beautifyHtml() {
-            const inputHtml = document.getElementById('inputHtml').value;
-            const outputHtml = document.getElementById('outputHtml');
-            const lineCount = document.getElementById('lineCount');
-            
-            // Làm đẹp HTML sử dụng js-beautify
-            const beautifiedHtml = html_beautify(inputHtml);
+<h2>HTML Beautifier Tool</h2>
 
-            // Hiển thị kết quả làm đẹp và số dòng
-            outputHtml.textContent = beautifiedHtml;
-            lineCount.textContent = beautifiedHtml.split('\n').length;
-        }
-    </script>
+<textarea id="inputHtml" placeholder="Paste your HTML here..."></textarea>
+<button onclick="beautifyHtml()">Beautify HTML</button>
+<textarea id="outputHtml" placeholder="Formatted HTML will appear here..." readonly></textarea>
+
+<script src="/js/beautify-html.js"></script>
+<script>
+  function beautifyHtml() {
+    var html = document.getElementById('inputHtml').value;
+    var beautifiedHtml = html_beautify(html, { indent_size: 2, space_in_empty_paren: true });
+    document.getElementById('outputHtml').value = beautifiedHtml;
+  }
+</script>
+
 </body>
 </html>
