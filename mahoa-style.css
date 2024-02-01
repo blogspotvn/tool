@@ -1,47 +1,49 @@
-body {background: #ddd;
-    margin: 0;
-    padding: 0;
-    color: #333;
-    font: normal normal 13px Arial,sans-serif;
-    transition: .4s;}
-
-
-body.loading .loading-modal {
-    display:block
+body {
+    background: #ddd;
+     margin: 0;
+     padding: 0;
+     color: #333;
+     font: normal normal 13px Arial,sans-serif;
+     transition: .4s;
 }
-
-.container {
-    width: 500px;
-    margin: 0 auto;
+ body.loading .loading-modal {
+     display:block 
 }
-.check, .button-group{
-    padding: 10px 0;
+ .container {
+     width: 500px;
+     margin: 50px auto;
+     background: #eee;
+     padding: 20px;
 }
-.button, . button-red{
-    border-radius: 3px;
-    background: #005b53;
-    color: #fff;
-    text-decoration: none;
-    cursor: pointer;
-    padding: 5px 10px;
-    margin-bottom: 5px;
-    border: 0;
+ .check, .button-group{
+     padding: 10px 0;
 }
-. button-red{background:#dd6666;}
-
-#codes  {
-    background-color: #fff;
-    border-left: 10px solid #dddfe2!important;
-    overflow: auto;
-    border: 1px solid #dddfe2;
-    position: relative;
-    border-width: 1px 1px 1px 0;
-    padding: 10px;
-    overflow-y: scroll;
-    margin: 20px 0;
+ .button, . button-red{
+     border-radius: 3px;
+     background: #005b53;
+     color: #fff;
+     text-decoration: none;
+     cursor: pointer;
+     padding: 5px 10px;
+     margin-bottom: 5px;
+     border: 0;
+}
+ . button-red{
+    background:#dd6666;
+}
+ #codes {
+     background-color: #fff;
+     border-left: 10px solid #dddfe2!important;
+     overflow: auto;
+     border: 1px solid #dddfe2;
+     position: relative;
+     border-width: 1px 1px 1px 0;
+     padding: 10px;
+     overflow-y: scroll;
+     margin: 20px 0;
      width:calc(100% - 20px);
-    height: 100px;
-    resize: none;
-    padding:10px;
+     height: 100px;
+     resize: none;
+     padding:10px;
 }
-
+ 
