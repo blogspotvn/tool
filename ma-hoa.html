@@ -1,0 +1,22 @@
+<html>
+
+<head>
+    <title>Mã Hóa Code</title>
+    <link rel="stylesheet" type="text/css" href="mahoa-style.css">
+</head>
+
+<body>
+    <textarea id='codes' placeholder='Copy/paste nội dung cần mã hóa vào đây rồi click Convert' spellcheck='false'></textarea>
+    <div class='button-group'>
+        <button id='cvrt' onclick='cdConvert();this.disabled = true;'>Convert</button>
+        <button onclick='cdClear();'>Xóa</button>
+    </div>
+    <input checked='true' id='opt1' type='checkbox' /> Convert <code>&amp;</code>
+    <input id='opt2' type='checkbox' /> Convert <code>&#39;</code>
+    <input id='opt3' type='checkbox' /> Convert <code>&quot;</code>
+    <input checked='true' id='opt4' type='checkbox' /> Convert <code>&lt;</code>
+    <input checked='true' id='opt5' type='checkbox' /> Convert <code>&gt;</code>
+    <script src="mahoa.js"></script>
+</body>
+
+</html>
