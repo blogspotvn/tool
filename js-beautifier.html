@@ -20,7 +20,14 @@
         <form>
             <div class="row">
                 <div class="col-sm-4 col-md-8 col-lg-8">
-                    <div class="form-group"><textarea class="form-control" name="code" id="code" rows="25" placeholder="Enter the Javascript you want to Beautify..."></textarea></div><a id="cap" href="javascript:beautify();" class="btn btn-primary btn-large listen"><i class="icon-indent-left icon-white"></i>Format Code</a></div>
+                    <div class="form-group"><textarea class="form-control" name="code" id="code" rows="25" placeholder="Enter the Javascript you want to Beautify..."></textarea></div>
+                    <a id="cap" href="javascript:beautify();" class="btn btn-primary btn-large listen"><i class="icon-indent-left icon-white"></i>Format Code</a>
+                    <!-- Nút Reset -->
+                <a id="resetBtn" class="btn btn-secondary btn-large listen" style="display:none;" onclick="resetTextarea();"><i class="icon-refresh icon-white"></i>Reset</a>
+                
+                <!-- Nút Copy -->
+                <a id="copyBtn" class="btn btn-success btn-large listen" style="display:none;" onclick="copyToClipboard();"><i class="icon-copy icon-white"></i>Copy</a>
+                </div>
                 <div
                     class="col-sm-8 col-md-4 col-lg-4"><select name="tabsize" id="tabsize" class="form-control"><option value="1">Indent with a tab character</option><option value="2">Indent with 2 spaces</option><option value="3">Indent with 3 spaces</option><option value="4">Indent with 4 spaces</option><option value="8">Indent with 8 spaces</option></select><br/>
                     <select name="max-preserve-newlines" id="max-preserve-newlines" class="form-control">
@@ -69,6 +76,39 @@ el.innerHTML = getCurrentYear();
     <script src="/js/myobfuscate_unpacker.js"></script>
     <script src="/js/formatting.js"></script>
     <script src="/js/main.js"></script>
+    <script>
+        // Hàm kiểm tra và hiển thị hoặc ẩn nút Reset và Copy
+        function checkButtonsVisibility() {
+            var codeTextarea = document.getElementById("code");
+            var resetBtn = document.getElementById("resetBtn");
+            var copyBtn = document.getElementById("copyBtn");
+
+            if (codeTextarea.value.trim() !== "") {
+                resetBtn.style.display = "inline-block";
+                copyBtn.style.display = "inline-block";
+            } else {
+                resetBtn.style.display = "none";
+                copyBtn.style.display = "none";
+            }
+        }
+
+        // Hàm reset nội dung trong ô văn bản
+        function resetTextarea() {
+            var codeTextarea = document.getElementById("code");
+            codeTextarea.value = "";
+            checkButtonsVisibility();
+        }
+
+        // Hàm sao chép nội dung trong ô văn bản vào clipboard
+        function copyToClipboard() {
+            var codeTextarea = document.getElementById("code");
+            codeTextarea.select();
+            document.execCommand("copy");
+        }
+
+        // Gọi hàm kiểm tra sự thay đổi trong ô văn bản khi trang web được tải
+        checkButtonsVisibility();
+    </script>
 </body>
 
 </html>
