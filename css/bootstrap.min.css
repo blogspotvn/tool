@@ -63,14 +63,14 @@ body {
      color: #eee;
      background-color: #333;
 }
-.copyright-container{
+.copyright-container {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
     background-color: #ddd;
     color: #333;
-    padding: 10px;
+    font-size: 15px;
     text-align: center;
 }
 a:link {
