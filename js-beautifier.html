@@ -22,15 +22,15 @@
                 <div class="col-sm-4 col-md-8 col-lg-8">
                     <div class="form-group"><textarea class="form-control" name="code" id="code" rows="25" placeholder="Enter the Javascript you want to Beautify..."></textarea></div>
                     <a id="cap" href="javascript:beautify();" class="btn btn-primary btn-large listen"><i class="icon-indent-left icon-white"></i>Format Code</a>
-<!-- Nút Reset -->
-<button id="resetBtn" class="btn btn-primary" style="display:none;" onclick="resetTextarea();"><i class="icon-refresh icon-white"></i>Reset</button>
-
-<!-- Nút Copy -->
-<button id="copyBtn" class="btn btn-secondary" style="display:none;" onclick="copyToClipboard();"><i class="icon-copy icon-white"></i>Copy</button>
-
                 </div>
-                <div
-                    class="col-sm-8 col-md-4 col-lg-4"><select name="tabsize" id="tabsize" class="form-control"><option value="1">Indent with a tab character</option><option value="2">Indent with 2 spaces</option><option value="3">Indent with 3 spaces</option><option value="4">Indent with 4 spaces</option><option value="8">Indent with 8 spaces</option></select><br/>
+                <div class="col-sm-8 col-md-4 col-lg-4">
+                    <!-- Nút Reset -->
+                    <button id="resetBtn" class="btn btn-primary" style="display:none;" onclick="resetTextarea();"><i class="icon-refresh icon-white"></i>Reset</button>
+
+                    <!-- Nút Copy -->
+                    <button id="copyBtn" class="btn btn-secondary" style="display:none;" onclick="copyToClipboard();"><i class="icon-copy icon-white"></i>Copy</button>
+                    
+                    <select name="tabsize" id="tabsize" class="form-control"><option value="1">Indent with a tab character</option><option value="2">Indent with 2 spaces</option><option value="3">Indent with 3 spaces</option><option value="4">Indent with 4 spaces</option><option value="8">Indent with 8 spaces</option></select><br/>
                     <select name="max-preserve-newlines" id="max-preserve-newlines" class="form-control">
                         <option value="-1">Remove all extra newlines</option>
                         <option value="1">Allow 1 newline between tokens</option>
@@ -39,29 +39,29 @@
                         <option value="10">Allow 10 newlines between tokens</option>
                         <option value="0">Allow unlimited newlines between tokens</option>
                         </select><br/><select name="wrap-line-length" id="wrap-line-length" class="form-control"><option value="0">Do not wrap lines</option><option value="40">Wrap lines near 40 characters</option><option value="70">Wrap lines near 70 characters</option><option value="80">Wrap lines near 80 characters</option><option value="110">Wrap lines near 110 characters</option><option value="120">Wrap lines near 120 characters</option><option value="160">Wrap lines near 160 characters</option></select><br/>
-                        <select
-                            id="brace-style" class="form-control">
-                            <option value="collapse">Braces with control statement</option>
-                            <option value="expand">Braces on own line</option>
-                            <option value="end-expand">End braces on own line</option>
-                            </select><br/>
-                            <p style="margin:10px 0" class="pull-left"><b>HTML &lt;style>, &lt;script> formatting:</b></p><select id="indent-scripts" class="form-control"><option value="keep">Keep indent level of the tag</option><option value="normal">Add one indent level</option><option value="separate">Separate indentation</option></select>                            <label for="end-with-newline"><input type="checkbox" id="end-with-newline"> End script and style with newline?</label> <label for="detect-packers"><input type="checkbox" id="detect-packers"> Detect packers and obfuscators?</label>                            <label for="keep-array-indentation"><input type="checkbox" id="keep-array-indentation"> Keep array indentation?</label> <label for="break-chained-methods"><input type="checkbox" id="break-chained-methods"> Break lines on chained methods?</label>                            <label for="space-before-conditional"><input type="checkbox" id="space-before-conditional"> Space before conditional: "if(x)" / "if (x)"</label> <label for="unescape-strings"><input type="checkbox" id="unescape-strings"> Unescape printable chars encoded as \xNN or \uNNNN?</label>                            <label for="jslint-happy"><input type="checkbox" id="jslint-happy"> Use JSLint-happy formatting tweaks?</label></div>
+                    <select id="brace-style" class="form-control">
+                        <option value="collapse">Braces with control statement</option>
+                        <option value="expand">Braces on own line</option>
+                        <option value="end-expand">End braces on own line</option>
+                    </select><br/>
+                    <p style="margin:10px 0" class="pull-left"><b>HTML &lt;style>, &lt;script> formatting:</b></p><select id="indent-scripts" class="form-control"><option value="keep">Keep indent level of the tag</option><option value="normal">Add one indent level</option><option value="separate">Separate indentation</option></select>                            <label for="end-with-newline"><input type="checkbox" id="end-with-newline"> End script and style with newline?</label> <label for="detect-packers"><input type="checkbox" id="detect-packers"> Detect packers and obfuscators?</label>                            <label for="keep-array-indentation"><input type="checkbox" id="keep-array-indentation"> Keep array indentation?</label> <label for="break-chained-methods"><input type="checkbox" id="break-chained-methods"> Break lines on chained methods?</label>                            <label for="space-before-conditional"><input type="checkbox" id="space-before-conditional"> Space before conditional: "if(x)" / "if (x)"</label> <label for="unescape-strings"><input type="checkbox" id="unescape-strings"> Unescape printable chars encoded as \xNN or \uNNNN?</label>                            <label for="jslint-happy"><input type="checkbox" id="jslint-happy"> Use JSLint-happy formatting tweaks?</label>
+                </div>
+            </div>
+        </form>
     </div>
-    </form>
-    </div>
-        <div class="copyright-container">
+    <div class="copyright-container">
       <p class="text-center ">©
         <span id='current-year'></span>
-<script type='text/javascript'>
-function getCurrentYear() {
-var d = new Date();
-return d.getFullYear();
-}
-el = document.getElementById('current-year');
-el.innerHTML = getCurrentYear();
-</script>
+        <script type='text/javascript'>
+        function getCurrentYear() {
+            var d = new Date();
+            return d.getFullYear();
+        }
+        el = document.getElementById('current-year');
+        el.innerHTML = getCurrentYear();
+        </script>
         by
-        <a href="https://https://www.blogspotvn.net/ ">BlogspotVN.Net</a>
+        <a href="https://www.blogspotvn.net/">BlogspotVN.Net</a>
       </p>
     </div>
     <script src="/js/jquery.min.js"></script>
@@ -77,39 +77,6 @@ el.innerHTML = getCurrentYear();
     <script src="/js/myobfuscate_unpacker.js"></script>
     <script src="/js/formatting.js"></script>
     <script src="/js/main.js"></script>
-    <script>
-        // Hàm kiểm tra và hiển thị hoặc ẩn nút Reset và Copy
-        function checkButtonsVisibility() {
-            var codeTextarea = document.getElementById("code");
-            var resetBtn = document.getElementById("resetBtn");
-            var copyBtn = document.getElementById("copyBtn");
-
-            if (codeTextarea.value.trim() !== "") {
-                resetBtn.style.display = "inline-block";
-                copyBtn.style.display = "inline-block";
-            } else {
-                resetBtn.style.display = "none";
-                copyBtn.style.display = "none";
-            }
-        }
-
-        // Hàm reset nội dung trong ô văn bản
-        function resetTextarea() {
-            var codeTextarea = document.getElementById("code");
-            codeTextarea.value = "";
-            checkButtonsVisibility();
-        }
-
-        // Hàm sao chép nội dung trong ô văn bản vào clipboard
-        function copyToClipboard() {
-            var codeTextarea = document.getElementById("code");
-            codeTextarea.select();
-            document.execCommand("copy");
-        }
-
-        // Gọi hàm kiểm tra sự thay đổi trong ô văn bản khi trang web được tải
-        checkButtonsVisibility();
-    </script>
 </body>
 
 </html>
