@@ -9,6 +9,11 @@ body {background: #ddd;
 body.loading .loading-modal {
     display:block
 }
+
+.container {
+    width: 500px;
+    margin: 0 auto;
+}
 .dropzone {
     border:2px dashed #999;
     border-radius:10px;
