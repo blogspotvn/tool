@@ -24,7 +24,9 @@
         <div class="row"><div id="fromeditor"></div><div class="row"><div class="col-md-3">
             <button id="convert" class="btn btn-primary" style="margin:10px 0">Beautifier</button>
             <button id="reset" class="btn btn-reset" style="margin:10px 0">Reset</button>
-        </div></div><div id="toeditor"></div></div></div>
+        </div></div><div id="toeditor"></div>
+            <button id="copy" class="btn btn-copy" style="margin:10px 0">Copy</button>
+        </div></div>
         <div class="copyright-container">
       <p class="text-center ">©
         <span id='current-year'></span>
@@ -52,6 +54,21 @@ document.getElementById('reset').addEventListener('click', function () {
     fromEditor.setValue('');
     toEditor.setValue('');
 });
+document.getElementById('copy').addEventListener('click', function () {
+    var toEditorContent = toEditor.getValue();
+
+    var textarea = document.createElement('textarea');
+    textarea.value = toEditorContent;
+    document.body.appendChild(textarea);
+
+    textarea.select();
+    document.execCommand('copy');
+
+    document.body.removeChild(textarea);
+
+    alert('Nội dung đã được sao chép vào clipboard.');
+});
+
 </script>
 </body>
 
