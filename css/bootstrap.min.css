@@ -32,8 +32,8 @@ body {
      text-align:center;
      border-radius:4px 
 }
- .btn-primary, a .btn{
-     color:#eee;
+ .btn-primary{
+     color:#eee!important;
      background-color:#005b53;
 }
  .btn-primary:hover{
