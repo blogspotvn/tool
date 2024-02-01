@@ -29,6 +29,9 @@ body {
  .button-red{
     background:#dd6666;
 }
+.button:hover,  .button-red:hover {
+    background: #000;
+}
  #codes {
      background-color: #fff;
      border-left: 10px solid #dddfe2!important;
