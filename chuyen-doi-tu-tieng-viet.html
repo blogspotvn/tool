@@ -5,11 +5,22 @@
     <meta charset="utf-8">
     <title>Chuyển Đổi Từ Tiếng Việt</title>
     <link href='/images/favicon.ico' rel='icon' type='image/x-icon'>
-    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">    
+    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <script src="/js/jquery.min.js"></script>
     <script src="/js/chuyendoitutv.js"></script>
     <script src="/js/ZeroClipboard.js"></script>
     <script src="/js/unorm.js"></script>
+    <style type="text/css">
+        #content{
+    width: 98%;
+    height: auto;
+    min-height: 200px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 1%;
+    resize: none;
+}
+    </style>
 </head>
 
 <body>
@@ -30,9 +41,9 @@
                     <a class="btn btn-primary" id="upper">CHỮ IN HOA</a>
                     <a class="btn btn-primary" id="capitalized">In Hoa Chữ Cái Đầu Trong Từ</a>
                     <a class="btn btn-primary" id="alternating">xEn kẼ HoA ThƯờNg</a>
-                    <a class="btn btn-primary" id="change" >Chuyển thành không dấu</a>
+                    <a class="btn btn-primary" id="change">Chuyển thành không dấu</a>
                 </div>
-                    <a id="clear" class="btn  btn-reset">Xóa nội dung</a>
+                <a id="clear" class="btn  btn-reset">Xóa nội dung</a>
 
                 <div id='kq'>
                     <span>Số từ : <b id="word">100</b></span><br/>
@@ -41,7 +52,22 @@
             </form>
         </div>
     </div>
-        <script>
+    <div class="copyright-container">
+        <p class="text-center ">©
+            <span id='current-year'></span>
+            <script type='text/javascript'>
+                function getCurrentYear() {
+                var d = new Date();
+                return d.getFullYear();
+                }
+                el = document.getElementById('current-year');
+                el.innerHTML = getCurrentYear();
+            </script>
+            by
+            <a href="https://www.blogspotvn.net/ ">BlogspotVN.Net</a>
+        </p>
+    </div>
+    <script>
         $('#clear').click(function(){
             $('#content').val(""); 
             $('#word').text("0"); 
