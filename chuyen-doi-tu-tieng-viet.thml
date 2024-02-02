@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="utf-8">
+    <title>Chuyển Đổi Từ Tiếng Việt</title>
+    <link href='/images/favicon.ico' rel='icon' type='image/x-icon'>
+    <script src="/js/chuyendoitutv.js"></script>
+    <script src="/js/ZeroClipboard.js"></script>
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <h1>Chuyển đổi từ Tiếng Việt</h1>
+        </div>
+
+        <div class="chuyendoitu">
+            <form onsubmit="download('convert_case.txt', this['content'].value)" method="post">
+                <div class="content">
+                    <textarea id="content" name="content" placeholder="Nhập nội dung"></textarea>
+                </div>
+                <div id='btn'>
+                    <a class="button left" id="sentence">In hoa chữ cái đầu tiên</a>
+                    <a class="button left" id="lower">chữ thường</a>
+                    <a class="button left" id="upper">CHỮ IN HOA</a>
+                    <a class="button left" id="capitalized">In Hoa Chữ Cái Đầu Trong Từ</a>
+                    <a class="button left" id="alternating">xEn kẼ HoA ThƯờNg</a>
+                    <a id="change" class="button left">Chuyển thành không dấu</a></div>
+
+                <div id='kq'>
+                    <span>Số từ : <b id="word">100</b></span><br/>
+                    <span>Số chữ cái : <b id="character">100</b></span>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
