@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #ddd;
     margin: 0;
     padding: 0;
 }
@@ -35,7 +35,8 @@ h1 {
 }
 
 .tool-item {
-    background-color: #ddd;
+    border: 1px solid #dddfe2;
+    background: #fff;
     padding: 20px;
     text-align: center;
     border-radius: 8px;
