@@ -122,9 +122,7 @@ a {
             <option value="none">Không</option>
         </select><br>
         <label for="password">Mật khẩu Wi-Fi:</label>
-        <input type="password" id="password" placeholder="Mật khẩu Wi-Fi"><br>
-        <label for="showPassword">Hiện mật khẩu:</label>
-        <span id="showPasswordBtn" class="eye-open" onclick="showPassword()"></span>
+        <input type="password" id="password" placeholder="Mật khẩu Wi-Fi"><span id="showPasswordBtn" class="eye-open" onclick="showPassword()"><i class="fas fa-eye"></i></span>
         <button id="generateBtn">Tạo QR Code</button>
         <div class="qrcode" id="qrcode"></div>
         <a id="downloadLink" style="display:none;">Tải QR Code</a>
