@@ -8,30 +8,47 @@
     <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     <style type="text/css">
-        #qrcode  {
-            display: inline-table;
-        }
-        .container input,.container select,.container button  {
-            margin-bottom: 10px;
-            padding: 8px;
-        }
-        .eye-open::before  {
-            font-family: 'Font Awesome 5 Free';
-            content: '\f06e';
-        }
-        .eye-close::before  {
-            font-family: 'Font Awesome 5 Free';
-            content: '\f070';
-        }
-        .qr-in,
-        .qr-out  {
-            width: 46%;
-            float: left;
-            padding: 2%;
-        }
-        .qr-out  {
-            text-align: center;
-        }    
+body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+h1 {
+    color: #333;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.qrcode {
+    margin-top: 20px;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+}
+ 
          .logotop {
             width: 40px;
             float: left;
@@ -80,62 +97,16 @@
                 <div class="text">BlogspotVN.Net</div>
             </a>
         </div>
-
-        <div class="row">
-            <h1>Tạo QR Cho Mật Khẩu Wifi</h1>
-        </div>
-        <div class="qr-in">
-            <form id="wifiForm">
-                <label for="ssid">SSID</label>
-                <br>
-                <input type="text" id="ssid" name="ssid" required autocomplete="off" placeholder="Tên wifi">
-                <br>
-                <br>
-
-                <label for="encryption">Encryption</label>
-                <br>
-                <select id="encryption" name="encryption">
-         <option value="WPA">WPA/WPA2</option>
-         <option value="none">None</option>
-         <option value="WEP">WEP</option>
-      </select>
-                <br>
-                <br>
-
-                <label for="key">Key</label>
-                <br>
-                <input type="password" id="key" name="key">
-                <button type="btn btn-primary" id="showPasswordBtn" onclick="showPassword()" class="eye-open"></button>
-                <br>
-                <br>
-
-                <button type="btn btn-primary" onclick="generateQR()">Generate QR Code</button>
-
-            </form>
-        </div>
-        <div class='qr-out'>
-            <div id="qrcode" class="qrcode"></div>
-            <a id="downloadPNG" href="#" class='btn btn-primary' target="_blank" style="display:none;">Download as PNG</a>
-            <a id="downloadSVG" href="#" class='btn btn-primary' target="_blank" style="display:none;">Download as SVG</a>
-        </div>
-        <div class="copyright-container">
-            <p class="text-center ">©
-                <span id='current-year'></span>
-                <script type='text/javascript'>
-                    function getCurrentYear() {
-                    var d = new Date();
-                    return d.getFullYear();
-                    }
-                    el = document.getElementById('current-year');
-                    el.innerHTML = getCurrentYear();
-                </script>
-                by
-                <a href="https://www.blogspotvn.net/">BlogspotVN.Net</a>
-            </p>
-        </div>
-        <script>
-            var blogspotvn=["\x73\x73\x69\x64","\x65\x6E\x63\x72\x79\x70\x74\x69\x6F\x6E","\x6B\x65\x79","\x3B\x54\x3A","\x3B","\x6E\x6F\x6E\x65","\x26\x73\x69\x7A\x65\x3D\x32\x35\x36\x78\x32\x35\x36","\x69\x6D\x67","\x71\x72\x63\x6F\x64\x65","","\x63\x72\x65\x64\x69\x74","\x70","\x4D\x61\x6B\x65\x20\x62\x79\x20\x42\x6C\x6F\x67\x73\x70\x6F\x74\x76\x6E\x2E\x6E\x65\x74","\x64\x6F\x77\x6E\x6C\x6F\x61\x64\x50\x4E\x47","\x64\x6F\x77\x6E\x6C\x6F\x61\x64","\x71\x72\x63\x6F\x64\x65\x2E\x70\x6E\x67","\x69\x6E\x6C\x69\x6E\x65\x2D\x62\x6C\x6F\x63\x6B","\x26\x73\x69\x7A\x65\x3D\x32\x35\x36\x78\x32\x35\x36\x26\x66\x6F\x72\x6D\x61\x74\x3D\x73\x76\x67","\x64\x6F\x77\x6E\x6C\x6F\x61\x64\x53\x56\x47","\x71\x72\x63\x6F\x64\x65\x2E\x73\x76\x67","\x73\x68\x6F\x77\x50\x61\x73\x73\x77\x6F\x72\x64\x42\x74\x6E","\x70\x61\x73\x73\x77\x6F\x72\x64","\x74\x65\x78\x74","\x65\x79\x65\x2D\x6F\x70\x65\x6E","\x65\x79\x65\x2D\x63\x6C\x6F\x73\x65"];function generateQR(){const _0x1700E=document.getElementById(blogspotvn[0]).value;const _0x16E78=document.getElementById(blogspotvn[1]).value;const _0x16EEC=document.getElementById(blogspotvn[2]).value;let _0x17048=("\x57\x49\x46\x49\x3A\x53\x3A"+_0x1700E+blogspotvn[3]+_0x16E78+blogspotvn[4]);if(_0x16E78!== blogspotvn[5]){_0x17048+= ("\x50\x3A"+_0x16EEC+blogspotvn[4])};_0x17048+= blogspotvn[4];const _0x16F26=("\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x70\x69\x2E\x71\x72\x73\x65\x72\x76\x65\x72\x2E\x63\x6F\x6D\x2F\x76\x31\x2F\x63\x72\x65\x61\x74\x65\x2D\x71\x72\x2D\x63\x6F\x64\x65\x2F\x3F\x64\x61\x74\x61\x3D"+encodeURIComponent(_0x17048)+blogspotvn[6]);const _0x16FD4=document.createElement(blogspotvn[7]);_0x16FD4.src= _0x16F26;const _0x16F9A=document.getElementById(blogspotvn[8]);_0x16F9A.innerHTML= blogspotvn[9];_0x16F9A.appendChild(_0x16FD4);const _0x16EB2=document.getElementById(blogspotvn[10]);if(!_0x16EB2){const _0x16E3E=document.createElement(blogspotvn[11]);_0x16E3E.textContent= blogspotvn[12];_0x16E3E.id= blogspotvn[10];_0x16F9A.parentNode.insertBefore(_0x16E3E,_0x16F9A.nextSibling)};document.getElementById(blogspotvn[13]).href= _0x16F26;document.getElementById(blogspotvn[13]).setAttribute(blogspotvn[14],blogspotvn[15]);document.getElementById(blogspotvn[13]).style.display= blogspotvn[16];const _0x16F60=("\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x70\x69\x2E\x71\x72\x73\x65\x72\x76\x65\x72\x2E\x63\x6F\x6D\x2F\x76\x31\x2F\x63\x72\x65\x61\x74\x65\x2D\x71\x72\x2D\x63\x6F\x64\x65\x2F\x3F\x64\x61\x74\x61\x3D"+encodeURIComponent(_0x17048)+blogspotvn[17]);document.getElementById(blogspotvn[18]).href= _0x16F60;document.getElementById(blogspotvn[18]).setAttribute(blogspotvn[14],blogspotvn[19]);document.getElementById(blogspotvn[18]).style.display= blogspotvn[16]}function showPassword(){const _0x16E3E=document.getElementById(blogspotvn[2]);const _0x16E78=document.getElementById(blogspotvn[20]);if(_0x16E3E.type=== blogspotvn[21]){_0x16E3E.type= blogspotvn[22];_0x16E78.classList.remove(blogspotvn[23]);_0x16E78.classList.add(blogspotvn[24])}else {_0x16E3E.type= blogspotvn[21];_0x16E78.classList.remove(blogspotvn[24]);_0x16E78.classList.add(blogspotvn[23])}}
-        </script>
+        <h1>QR Code Generator</h1>
+        <label for="networkName">Tên mạng Wi-Fi:</label>
+        <input type="text" id="networkName" placeholder="Tên mạng Wi-Fi"><br>
+        <label for="password">Mật khẩu Wi-Fi:</label>
+        <input type="password" id="password" placeholder="Mật khẩu Wi-Fi"><br>
+        <button id="generateBtn">Tạo QR Code</button>
+        <div class="qrcode" id="qrcode"></div>
+        <a id="downloadLink" style="display:none;">Tải QR Code</a>
+    </div>
+    <script src="/jsqrcode.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
 </body>
-
 </html>
