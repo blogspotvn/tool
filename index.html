@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='/images/favicon.ico' rel='icon' type='image/x-icon'>
     <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="/css/style.css">
     <title>Tổng hợp Tool của Blogspot VN</title>
@@ -45,6 +46,21 @@
             </a>
         </div>
     </section>
+    <div class="copyright-container">
+        <p class="text-center ">©
+            <span id='current-year'></span>
+            <script type='text/javascript'>
+                function getCurrentYear() {
+                var d = new Date();
+                return d.getFullYear();
+                }
+                el = document.getElementById('current-year');
+                el.innerHTML = getCurrentYear();
+            </script>
+            by
+            <a href="https://www.blogspotvn.net/ ">BlogspotVN.Net</a>
+        </p>
+    </div>
 </body>
 
 </html>
