@@ -18,6 +18,8 @@ a:link {
     cursor: pointer;
 }
 
+a h2 {color: #005b53;}
+
 h1 {
     font-size: 24px;
 }
