@@ -60,17 +60,17 @@ $(document).ready(
 			return false
 		});
 
-		$('#change').click(function(){
-			text = $('#content').val();
-			text= text.replace(/Ã |Ã¡|áº¡|áº£|Ã£|Ã¢|áº§|áº¥|áº­|áº©|áº«|Äƒ|áº±|áº¯|áº·|áº³|áºµ/g,"a");  
-			text= text.replace(/Ã¨|Ã©|áº¹|áº»|áº½|Ãª|á»|áº¿|á»‡|á»ƒ|á»…/g,"e");  
-			text= text.replace(/Ã¬|Ã­|á»‹|á»‰|Ä©/g,"i");  
-			text= text.replace(/Ã²|Ã³|á»|á»|Ãµ|Ã´|á»“|á»‘|á»™|á»•|á»—|Æ¡|á»|á»›|á»£|á»Ÿ|á»¡/g,"o");  
-			text= text.replace(/Ã¹|Ãº|á»¥|á»§|Å©|Æ°|á»«|á»©|á»±|á»­|á»¯/g,"u");  
-			text= text.replace(/á»³|Ã½|á»µ|á»·|á»¹/g,"y");  
-			text= text.replace(/Ä‘/g,"d");  
-			$('#content').val(text);
-		})
+$('#change').click(function(){
+    text = $('#content').val();
+    text= text.replace(/Ã |Ã¡|áº¡|áº£|Ã£|Ã¢|áº§|áº¥|áº­|áº©|áº«|Äƒ|áº±|áº¯|áº·|áº³|áºµ/g,"a");  
+    text= text.replace(/Ã¨|Ã©|áº¹|áº»|áº½|Ãª|á»|áº¿|á»‡|á»ƒ|á»…/g,"e");  
+    text= text.replace(/Ã¬|Ã­|á»|á»‰|Ä©/g,"i");  
+    text= text.replace(/Ã²|Ã³|á»|á»|Ãµ|Ã´|á»“|á»‘|á»™|á»•|á»—|Æ¡|á»|á»›|á»£|á»Ÿ|á»¡/g,"o");  
+    text= text.replace(/Ã¹|Ãº|á»¥|á»§|Å©|Æ°|á»«|á»©|á»±|á»­|á»¯/g,"u");  
+    text= text.replace(/á»³|Ã½|á»µ|á»·|á»¹/g,"y");  
+    text= text.replace(/Ä‘/g,"d");  
+    $('#content').val(text);
+})
 
 		function calc_counts() {
 			$('.char_count').text($('#content').val().length);
