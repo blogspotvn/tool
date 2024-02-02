@@ -27,8 +27,20 @@ input {
     padding: 10px;
     margin: 5px 0;
 }
-#showPassword {
-    margin-left: 5px;
+.eye-open {
+    width: 24px;
+    height: 24px;
+    background-image: url('eye-open.png'); /* Đặt hình ảnh con mắt mở ở đây */
+    background-size: cover;
+    cursor: pointer;
+}
+
+.eye-closed {
+    width: 24px;
+    height: 24px;
+    background-image: url('eye-closed.png'); /* Đặt hình ảnh con mắt đóng ở đây */
+    background-size: cover;
+    cursor: pointer;
 }
 
 button {
@@ -112,7 +124,7 @@ a {
         <label for="password">Mật khẩu Wi-Fi:</label>
         <input type="password" id="password" placeholder="Mật khẩu Wi-Fi"><br>
         <label for="showPassword">Hiện mật khẩu:</label>
-        <input type="checkbox" id="showPassword"><br>
+        <span id="showPasswordBtn" class="eye-open" onclick="showPassword()"></span>
         <button id="generateBtn">Tạo QR Code</button>
         <div class="qrcode" id="qrcode"></div>
         <a id="downloadLink" style="display:none;">Tải QR Code</a>
