@@ -27,6 +27,9 @@ input {
     padding: 10px;
     margin: 5px 0;
 }
+#showPassword {
+    margin-left: 5px;
+}
 
 button {
     background-color: #007bff;
@@ -98,15 +101,23 @@ a {
             </a>
         </div>
         <h1>QR Code Generator</h1>
-        <label for="networkName">Tên mạng Wi-Fi:</label>
-        <input type="text" id="networkName" placeholder="Tên mạng Wi-Fi"><br>
+        <label for="ssid">SSID (Tên mạng Wi-Fi):</label>
+        <input type="text" id="ssid" placeholder="SSID"><br>
+        <label for="encryption">Loại Encryption:</label>
+        <select id="encryption">
+            <option value="WPA">WPA</option>
+            <option value="WEP">WEP</option>
+            <option value="none">Không</option>
+        </select><br>
         <label for="password">Mật khẩu Wi-Fi:</label>
         <input type="password" id="password" placeholder="Mật khẩu Wi-Fi"><br>
+        <label for="showPassword">Hiện mật khẩu:</label>
+        <input type="checkbox" id="showPassword"><br>
         <button id="generateBtn">Tạo QR Code</button>
         <div class="qrcode" id="qrcode"></div>
         <a id="downloadLink" style="display:none;">Tải QR Code</a>
     </div>
-    <script src="/jsqrcode.min.js"></script>
+    <script src="/js/qrcode.min.js"></script>
     <script src="/js/jquery.min.js"></script>
 </body>
 </html>
