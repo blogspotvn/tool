@@ -24,12 +24,14 @@
                     <textarea id="content" name="content" placeholder="Nhập nội dung"></textarea>
                 </div>
                 <div id='btn'>
-                    <a class="button left" id="sentence">In hoa chữ cái đầu tiên</a>
-                    <a class="button left" id="lower">chữ thường</a>
-                    <a class="button left" id="upper">CHỮ IN HOA</a>
-                    <a class="button left" id="capitalized">In Hoa Chữ Cái Đầu Trong Từ</a>
-                    <a class="button left" id="alternating">xEn kẼ HoA ThƯờNg</a>
-                    <a id="change" class="button left">Chuyển thành không dấu</a></div>
+                    <a class="btn left" id="sentence">In hoa chữ cái đầu tiên</a>
+                    <a class="btn left" id="lower">chữ thường</a>
+                    <a class="btn left" id="upper">CHỮ IN HOA</a>
+                    <a class="btn left" id="capitalized">In Hoa Chữ Cái Đầu Trong Từ</a>
+                    <a class="btn left" id="alternating">xEn kẼ HoA ThƯờNg</a>
+                    <a id="change" class="btn left">Chuyển thành không dấu</a>
+                </div>
+                    <a id="clear" class="button  btn-red">Xóa nội dung</a>
 
                 <div id='kq'>
                     <span>Số từ : <b id="word">100</b></span><br/>
@@ -38,6 +40,13 @@
             </form>
         </div>
     </div>
+        <script>
+        $('#clear').click(function(){
+            $('#content').val(""); 
+            $('#word').text("0"); 
+            $('#character').text("0");
+        });
+    </script>
 </body>
 
 </html>
