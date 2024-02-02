@@ -78,7 +78,7 @@
         }
     </style>
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
-        <script>
+       <script>
         function showPassword() {
             const keyInput = document.getElementById('key');
             const showPasswordBtn = document.getElementById('showPasswordBtn');
@@ -114,9 +114,7 @@
                 downloadPNG.style.display = 'inline-block';
 
                 const downloadSVG = document.getElementById('downloadSVG');
-                const svgData = qrcodeContainer.querySelector('svg').outerHTML;
-                const blob = new Blob([svgData], { type: 'image/svg+xml' });
-                downloadSVG.href = URL.createObjectURL(blob);
+                downloadSVG.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(qrcodeContainer.querySelector('svg').outerHTML);
                 downloadSVG.style.display = 'inline-block';
             }
         }
