@@ -72,6 +72,10 @@
                     border: 1px solid #ccc;
                     background-color: #f9f9f9;
                 }
+                .btn-copy {
+                    display: none;
+                }
+
     </style>
 </head>
 <div class="container">
@@ -118,7 +122,7 @@
     <div class="code-container">
         <pre id="code-container"></pre>
     </div>
-    <button class='btn btn-copy' onclick="copyTable()">Copy</button>
+<button class='btn btn-copy' id="copy-button" onclick="copyTable()">Copy</button>
 
 </div>
 <div class="copyright-container">
@@ -157,67 +161,75 @@
             return result.trim();
         }
 
-        function generateTable() {
-            const numRows = parseInt(document.getElementById("num-rows").value);
-            const numCols = parseInt(document.getElementById("num-cols").value);
-            const tablesContainer = document.getElementById("tables");
-            const codeContainer = document.getElementById("code-container");
-            const preElement = document.querySelector("pre");
+function generateTable() {
+    const numRows = parseInt(document.getElementById("num-rows").value);
+    const numCols = parseInt(document.getElementById("num-cols").value);
+    const tablesContainer = document.getElementById("tables");
+    const codeContainer = document.getElementById("code-container");
+    const preElement = document.querySelector("pre");
+    const copyButton = document.getElementById("copy-button"); // Lấy thẻ nút "Sao chép"
 
-            const table = document.createElement("table");
-            const tbody = document.createElement("tbody");
+    const table = document.createElement("table");
+    const tbody = document.createElement("tbody");
 
-            for (let i = 1; i <= numRows; i++) {
-                const row = document.createElement("tr");
-                for (let j = 1; j <= numCols; j++) {
-                    const cell = document.createElement("td");
-                    cell.contentEditable = true;
-                    row.appendChild(cell);
-                }
-                tbody.appendChild(row);
-            }
-
-            table.appendChild(tbody);
-            tablesContainer.innerHTML = "";
-            tablesContainer.appendChild(table);
-
-            const exportButton = document.createElement("button");
-            exportButton.classList.add("btn-primary");
-            exportButton.textContent = "Xuất mã HTML";
-            exportButton.classList.add("btn");
-            exportButton.addEventListener("click", () => {
-                const editableCells = table.querySelectorAll('[contenteditable="true"]');
-                editableCells.forEach((cell) => {
-                    cell.removeAttribute("contenteditable");
-                });
-
-                const tableHtml = table.outerHTML;
-                const cleanedHtml = tableHtml.replace(/^<|>$/g, '').trim();
-                const formattedHtml = formatHTML(cleanedHtml);
-
-                preElement.textContent = formattedHtml;
-                preElement.style.display = "block";
-                exportButton.style.display = "none";
-            });
-
-            tablesContainer.appendChild(exportButton);
+    for (let i = 1; i <= numRows; i++) {
+        const row = document.createElement("tr");
+        for (let j = 1; j <= numCols; j++) {
+            const cell = document.createElement("td");
+            cell.contentEditable = true;
+            row.appendChild(cell);
         }
+        tbody.appendChild(row);
+    }
 
-        function resetTable() {
-            const tablesContainer = document.getElementById("tables");
-            const codeContainer = document.getElementById("code-container");
-            const numRowsInput = document.getElementById("num-rows");
-            const numColsInput = document.getElementById("num-cols");
+    table.appendChild(tbody);
+    tablesContainer.innerHTML = "";
+    tablesContainer.appendChild(table);
 
-            const table = tablesContainer.querySelector("table");
-            if (table) {
-                table.remove();
-            }
+    copyButton.style.display = "block"; // Hiển thị nút "Sao chép"
 
-            codeContainer.textContent = "";
-            numRowsInput.value = "";
-            numColsInput.value = "";
-        }
+    const exportButton = document.createElement("button");
+    exportButton.classList.add("btn-primary");
+    exportButton.textContent = "Xuất mã HTML";
+    exportButton.classList.add("btn");
+    exportButton.addEventListener("click", () => {
+        const editableCells = table.querySelectorAll('[contenteditable="true"]');
+        editableCells.forEach((cell) => {
+            cell.removeAttribute("contenteditable");
+        });
+
+        const tableHtml = table.outerHTML;
+        const cleanedHtml = tableHtml.replace(/^<|>$/g, '').trim();
+        const formattedHtml = formatHTML(cleanedHtml);
+
+        preElement.textContent = formattedHtml;
+        preElement.style.display = "block";
+        exportButton.style.display = "none";
+    });
+
+    tablesContainer.appendChild(exportButton);
+}
+
+
+function resetTable() {
+    const tablesContainer = document.getElementById("tables");
+    const codeContainer = document.getElementById("code-container");
+    const numRowsInput = document.getElementById("num-rows");
+    const numColsInput = document.getElementById("num-cols");
+    const copyButton = document.getElementById("copy-button"); 
+
+    const table = tablesContainer.querySelector("table");
+    if (table) {
+        table.remove();
+    }
+
+    codeContainer.textContent = "";
+    numRowsInput.value = "";
+    numColsInput.value = "";
+
+    copyButton.style.display = "none"; 
+}
+
 </script>
 </body>
 
