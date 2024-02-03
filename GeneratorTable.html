@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Table</title>
+    <style>
+        pre {
+            display: none;
+        }
+
+        .input-form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        input[type="number"] {
+            width: 50px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-right: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table, th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        td {
+            background-color: #f9f9f9;
+            min-width: 20px;
+        }
+
+        .code-container {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="input-form">
+        <label for="num-rows">Số dòng:</label>
+        <input type="number" id="num-rows">
+        <label for="num-cols">Số cột:</label>
+        <input type="number" id="num-cols"><br>
+    </div>
+    <button class='button' onclick="generateTable()">Tạo bảng</button>
+    <button class='button' onclick="resetTable()">Reset</button>
+    <div id="tables"></div>
+
+    <div class="code-container">
+        <pre id="code-container"></pre>
+    </div>
+
+    <script>
+        function formatHTML(html) {
+            const tab = "    ";
+            let result = "";
+            let indentLevel = 0;
+
+            html.split(/>\s*</).forEach(function(element) {
+                if (element.match(/^\/\w/)) {
+                    indentLevel--;
+                }
+
+                result += `${" ".repeat(indentLevel * 4)}<${element}>\n`;
+
+                if (element.match(/^<?\w[^>]*[^/]$/)) {
+                    indentLevel++;
+                }
+            });
+
+            return result.trim();
+        }
+
+        function generateTable() {
+            const numRows = parseInt(document.getElementById("num-rows").value);
+            const numCols = parseInt(document.getElementById("num-cols").value);
+            const tablesContainer = document.getElementById("tables");
+            const codeContainer = document.getElementById("code-container");
+            const preElement = document.querySelector("pre");
+
+            const table = document.createElement("table");
+            const tbody = document.createElement("tbody");
+
+            for (let i = 1; i <= numRows; i++) {
+                const row = document.createElement("tr");
+                for (let j = 1; j <= numCols; j++) {
+                    const cell = document.createElement("td");
+                    cell.contentEditable = true;
+                    row.appendChild(cell);
+                }
+                tbody.appendChild(row);
+            }
+
+            table.appendChild(tbody);
+            tablesContainer.innerHTML = "";
+            tablesContainer.appendChild(table);
+
+            const exportButton = document.createElement("button");
+            exportButton.classList.add("button");
+            exportButton.textContent = "Xuất mã HTML";
+            exportButton.classList.add("button");
+            exportButton.addEventListener("click", () => {
+                const editableCells = table.querySelectorAll('[contenteditable="true"]');
+                editableCells.forEach((cell) => {
+                    cell.removeAttribute("contenteditable");
+                });
+
+                const tableHtml = table.outerHTML;
+                const cleanedHtml = tableHtml.replace(/^<|>$/g, '').trim();
+                const formattedHtml = formatHTML(cleanedHtml);
+
+                preElement.textContent = formattedHtml;
+                preElement.style.display = "block";
+                exportButton.style.display = "none";
+            });
+
+            tablesContainer.appendChild(exportButton);
+        }
+
+        function resetTable() {
+            const tablesContainer = document.getElementById("tables");
+            const codeContainer = document.getElementById("code-container");
+            const numRowsInput = document.getElementById("num-rows");
+            const numColsInput = document.getElementById("num-cols");
+
+            const table = tablesContainer.querySelector("table");
+            if (table) {
+                table.remove();
+            }
+
+            codeContainer.textContent = "";
+            numRowsInput.value = "";
+            numColsInput.value = "";
+        }
+    </script>
+</body>
+</html>
