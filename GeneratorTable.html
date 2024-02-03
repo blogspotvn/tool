@@ -186,7 +186,7 @@ function generateTable() {
     tablesContainer.innerHTML = "";
     tablesContainer.appendChild(table);
 
-    copyButton.style.display = "block"; // Hiển thị nút "Sao chép"
+    copyButton.style.display = "block"; 
 
     const exportButton = document.createElement("button");
     exportButton.classList.add("btn-primary");
@@ -229,6 +229,25 @@ function resetTable() {
 
     copyButton.style.display = "none"; 
 }
+
+    function copyTable() {
+    const preElement = document.getElementById("code-container");
+    const textToCopy = preElement.textContent;
+
+    const tempTextArea = document.createElement("textarea");
+    tempTextArea.value = textToCopy;
+    document.body.appendChild(tempTextArea);
+
+    tempTextArea.select();
+    tempTextArea.setSelectionRange(0, 99999); 
+
+    document.execCommand("copy");
+
+    document.body.removeChild(tempTextArea);
+
+    alert("Copied to clipboard: " + textToCopy);
+}
+
 
 </script>
 </body>
