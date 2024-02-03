@@ -5,6 +5,15 @@ body {
     padding: 0;
 }
 
+.top-header {
+    height: 40px;
+}
+.logotop {
+    width: 40px;
+    float: left;
+}
+
+
 header {
     background-color: #ababab;
     color: #fff;
