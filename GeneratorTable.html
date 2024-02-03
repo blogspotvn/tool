@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,79 +9,79 @@
     <script src="js/ZeroClipboard.js"></script>
     <link href='/images/favicon.ico' rel='icon' type='image/x-icon'>
     <style>
-.logotop {
-    width: 40px;
-    float: left;
-}
- .top-header{
-    height: 40px;
-}
- .text {
-     width: max-content;
-     float: left;
-     margin: 5px 10px;
-     font-size: 25px;
-     font-weight: 700;
-     color: #777;
-}
-        pre {
-            display: none;
+        .logotop {
+            width: 40px;
+            float: left;
         }
-
-        .input-form {
-            margin-bottom: 20px;
+         .top-header{
+            height: 40px;
         }
-
-        label {
-            font-weight: bold;
-            margin-right: 10px;
+         .text {
+             width: max-content;
+             float: left;
+             margin: 5px 10px;
+             font-size: 25px;
+             font-weight: 700;
+             color: #777;
         }
-
-        input[type="number"] {
-            width: 50px;
-            padding: 5px;
-            border: 1px solid #ccc;
-            border-radius: 3px;
-            margin-right: 20px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-
-        table, th, td {
-            border: 1px solid #ccc;
-            padding: 10px;
-            text-align: center;
-        }
-
-        th {
-            background-color: #007bff;
-            color: #fff;
-        }
-
-        td {
-            background-color: #f9f9f9;
-            min-width: 20px;
-        }
-
-        .code-container {
-            margin-top: 20px;
-            padding: 20px;
-            border: 1px solid #ccc;
-            background-color: #f9f9f9;
-            text-align: left;
-            white-space: pre-wrap;
-        }
+                pre {
+                    display: none;
+                }
+        
+                .input-form {
+                    margin-bottom: 20px;
+                }
+        
+                label {
+                    font-weight: bold;
+                    margin-right: 10px;
+                }
+        
+                input[type="number"] {
+                    width: 50px;
+                    padding: 5px;
+                    border: 1px solid #ccc;
+                    border-radius: 3px;
+                    margin-right: 20px;
+                }
+        
+                table {
+                    width: 100%;
+                    border-collapse: collapse;
+                    margin: 20px 0;
+                }
+        
+                table, th, td {
+                    border: 1px solid #ccc;
+                    padding: 10px;
+                    text-align: center;
+                }
+        
+                th {
+                    background-color: #007bff;
+                    color: #fff;
+                }
+        
+                td {
+                    background-color: #f9f9f9;
+                    min-width: 20px;
+                }
+        
+                .code-container {
+                    margin-top: 20px;
+                    padding: 20px;
+                    border: 1px solid #ccc;
+                    background-color: #f9f9f9;
+                    text-align: left;
+                    white-space: pre-wrap;
+                }
     </style>
 </head>
-    <div class="container">
-        <div class="top-header">
-            <a class="logo" href="https://tool.blogspotvn.net" id="logo">
-                <div class="logotop">
-                    <svg viewBox="0 0 437.5 437.5" x="0px" y="0px">
+<div class="container">
+    <div class="top-header">
+        <a class="logo" href="https://tool.blogspotvn.net" id="logo">
+            <div class="logotop">
+                <svg viewBox="0 0 437.5 437.5" x="0px" y="0px">
 <g>
 <path d="M437.5,406.2c0,17.2-14,31.2-31.2,31.2h-375C14,437.5,0,423.5,0,406.2v-375C0,14,14,0,31.2,0h375   c17.2,0,31.2,14,31.2,31.2V406.2z" fill="#005b53"></path>
 <linearGradient gradientTransform="matrix(0.5 0 0 -0.5 -370.125 59.625)" gradientUnits="userSpaceOnUse" id="SVGID_1_" x1="1037.974" x2="1449.1095" y1="-220.1406" y2="-631.276">
@@ -100,10 +101,14 @@
 <path d="M437.5,406.2c0,17.2-14,31.2-31.2,31.2h-375C14,437.5,0,423.5,0,406.2v-375   C0,14,14,0,31.2,0h375c17.2,0,31.2,14,31.2,31.2V406.2z" fill="url(#SVGID_2_)" fill-opacity="0.1"></path>
 </g>
 </svg>
-                </div>
-                <div class="text">BlogspotVN.Net</div>
-            </a>
-        </div>    <div class="input-form">
+            </div>
+            <div class="text">BlogspotVN.Net</div>
+        </a>
+    </div>
+    <div class="row">
+        <h1>Generator Table</h1>
+    </div>
+    <div class="input-form">
         <label for="num-rows">Số dòng:</label>
         <input type="number" id="num-rows">
         <label for="num-cols">Số cột:</label>
@@ -116,26 +121,26 @@
     <div class="code-container">
         <pre id="code-container"></pre>
     </div>
-<button class='btn btn-copy' onclick="copyTable()">Sao chép bảng</button>
+    <button class='btn btn-copy' onclick="copyTable()">Sao chép bảng</button>
 
-    </div>
-        <div class="copyright-container">
-        <p class="text-center ">©
-            <span id='current-year'></span>
-            <script type='text/javascript'>
-                function getCurrentYear() {
+</div>
+<div class="copyright-container">
+    <p class="text-center ">©
+        <span id='current-year'></span>
+        <script type='text/javascript'>
+            function getCurrentYear() {
                 var d = new Date();
                 return d.getFullYear();
                 }
                 el = document.getElementById('current-year');
                 el.innerHTML = getCurrentYear();
-            </script>
-            by
-            <a href="https://www.blogspotvn.net/ ">BlogspotVN.Net</a>
-        </p>
-    </div>
-    <script>
-        function formatHTML(html) {
+        </script>
+        by
+        <a href="https://www.blogspotvn.net/ ">BlogspotVN.Net</a>
+    </p>
+</div>
+<script>
+    function formatHTML(html) {
             const tab = "    ";
             let result = "";
             let indentLevel = 0;
@@ -216,6 +221,7 @@
             numRowsInput.value = "";
             numColsInput.value = "";
         }
-    </script>
+</script>
 </body>
+
 </html>
