@@ -6,11 +6,14 @@ body {
 }
 
 .top-header {
-    height: 40px;
+    height: 60px;
+    text-align: center;
+    padding: 20px;
 }
 .logotop {
     width: 40px;
-    float: left;
+    margin-bottom: 10px;
+    display: inline-flex;
 }
 
 
