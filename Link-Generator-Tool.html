@@ -102,6 +102,23 @@
                 alertBox.classList.remove("show");
             }, 3000);
         }
+        function copyTable() {
+    const preElement = document.querySelector("pre");
+    const codeText = preElement.textContent;
+
+    const clipboard = new ClipboardJS('.button', {
+        text: function () {
+            return codeText;
+        }
+    });
+
+    clipboard.on('success', function (e) {
+        alert('Đã sao chép!');
+        e.clearSelection();
+    });
+}
+const copyButton = document.querySelector('.button');
+copyButton.addEventListener('click', copyTable);
     </script>
 </body>
 </html>
