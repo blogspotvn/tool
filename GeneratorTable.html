@@ -68,12 +68,9 @@
                 }
         
                 .code-container {
-                    margin-top: 20px;
-                    padding: 20px;
+                    padding: 0 20px;
                     border: 1px solid #ccc;
                     background-color: #f9f9f9;
-                    text-align: left;
-                    white-space: pre-wrap;
                 }
     </style>
 </head>
@@ -121,7 +118,7 @@
     <div class="code-container">
         <pre id="code-container"></pre>
     </div>
-    <button class='btn btn-copy' onclick="copyTable()">Sao chép bảng</button>
+    <button class='btn btn-copy' onclick="copyTable()">Copy</button>
 
 </div>
 <div class="copyright-container">
@@ -185,7 +182,7 @@
             tablesContainer.appendChild(table);
 
             const exportButton = document.createElement("button");
-            exportButton.classList.add("button");
+            exportButton.classList.add("btn btn-primary");
             exportButton.textContent = "Xuất mã HTML";
             exportButton.classList.add("button");
             exportButton.addEventListener("click", () => {
