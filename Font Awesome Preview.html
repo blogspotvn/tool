@@ -36,13 +36,29 @@
         align-items: center;
     }
     .preview-icon {
-        font-size: 3em;
-        margin-right: 10px;
+        text-align: center;
+        display: block;
     }
     #previewCode {
         font-family: Consolas, monospace;
         font-size: 14px;
         color: #444;
+    }
+    pre {
+    display: block;
+    font: normal 12px Monaco,"Courier New",Courier,monospace!important;
+    background-color: #fff;
+    border-left: 10px solid #dddfe2!important;
+    overflow: auto;
+    border: 1px solid #dddfe2;
+    word-wrap: normal!important;
+    color: #000;
+    position: relative;
+    border-width: 1px 1px 1px 0;
+    padding: 10px;
+    max-height: 500px;
+    overflow-y: scroll;
+    white-space: pre-wrap;
     }
 </style>
 </head>
@@ -118,8 +134,8 @@
 </div>
 
 <div id="previewArea">
-    <span id="previewIcon" class="preview-icon"></span>
-    <span id="previewCode"></span>
+    <div id="previewIcon" class="preview-icon"></div>
+    <pre id="previewCode"></pre>
 </div>
 
 <script>
