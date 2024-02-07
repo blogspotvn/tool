@@ -84,6 +84,17 @@
      overflow-y: scroll;
      white-space: pre-wrap;
 }
+ .copyright-container {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ddd;
+    color: #333;
+    font-size: 15px;
+    text-align: center;
+    padding: 1px;
+}   
 
 </style>
 </head>
@@ -173,6 +184,21 @@
             <div id="previewIcon" class="preview-icon"></div>
             <pre id="previewCode"></pre>
         </div>
+    </div>
+    <div class="copyright-container">
+        <p class="text-center ">©
+            <span id="current-year">2024</span>
+            <script type="text/javascript">
+                function getCurrentYear() {
+                var d = new Date();
+                return d.getFullYear();
+                }
+                el = document.getElementById('current-year');
+                el.innerHTML = getCurrentYear();
+            </script>
+            by
+            <a href="https://www.blogspotvn.net/">BlogspotVN.Net</a>
+        </p>
     </div>
     <script>
         const iconInput = document.getElementById('iconInput');
