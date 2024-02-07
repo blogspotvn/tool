@@ -158,8 +158,12 @@
         const flipClass = flipSelect.value;
         const animateClass = animateSelect.value;
 
-        previewIcon.innerHTML = `<i class="${styleClass} fa-${iconName} ${sizeClass} ${rotationClass} ${flipClass} ${animateClass}" style="color: ${color}"></i>`;
-        previewCode.textContent = `<i class="${styleClass} fa-${iconName} ${sizeClass} ${rotationClass} ${flipClass} ${animateClass}" style="color: ${color}"></i>`;
+        // Xóa bỏ các lựa chọn không được chọn
+        const classesToRemove = ['', 'None'];
+        const filteredClasses = [styleClass, `fa-${iconName}`, sizeClass, rotationClass, flipClass, animateClass].filter(cls => !classesToRemove.includes(cls));
+
+        previewIcon.innerHTML = `<i class="${filteredClasses.join(' ')}" style="color: ${color}"></i>`;
+        previewCode.textContent = `<i class="${filteredClasses.join(' ')}" style="color: ${color}"></i>`;
     }
 
     iconInput.addEventListener('input', updatePreview);
@@ -176,7 +180,7 @@
         window.open(searchUrl, '_blank');
     });
 
-    // Initial update
+    // Cập nhật ban đầu
     updatePreview();
 </script>
 
