@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Font Awesome Preview Tool</title>
 <link href='/css/font-awesome/5.15.4/css/all.css' rel='stylesheet' type='text/css'/>
-<style>
+    <style>
     body {
         font-family: Arial, sans-serif;
         margin: 20px;
@@ -32,27 +32,18 @@
     }
     #previewArea {
         margin-top: 20px;
+        display: flex;
         align-items: center;
     }
     .preview-icon {
+        font-size: 3em;
         margin-right: 10px;
     }
-  pre {
-    display: block;
-    font: normal 12px Monaco,"Courier New",Courier,monospace!important;
-    background-color: #fff;
-    border-left: 10px solid #dddfe2!important;
-    overflow: auto;
-    border: 1px solid #dddfe2;
-    word-wrap: normal!important;
-    color: #000;
-    position: relative;
-    border-width: 1px 1px 1px 0;
-    padding: 10px;
-    max-height: 500px;
-    overflow-y: scroll;
-    white-space: pre-wrap;
-}
+    #previewCode {
+        font-family: Consolas, monospace;
+        font-size: 14px;
+        color: #444;
+    }
 </style>
 </head>
 <body>
@@ -69,6 +60,7 @@
         <option value="fas">Solid (fas)</option>
         <option value="far">Regular (far)</option>
         <option value="fal">Light (fal)</option>
+        <option value="fab">Brands (fab)</option>
         <option value="fad">Duotone (fad)</option>
     </select>
 </div>
@@ -127,7 +119,7 @@
 
 <div id="previewArea">
     <span id="previewIcon" class="preview-icon"></span>
-    <pre id="previewCode"></pre>
+    <span id="previewCode"></span>
 </div>
 
 <script>
