@@ -9,6 +9,19 @@
     body {
         font-family: Arial, sans-serif;
         margin: 20px;
+        color:#333;
+    }
+        .top-header {
+    height: 40px;
+}
+        .logotop {
+    width: 40px;
+    float: left;
+}
+    .container {
+    width: 1024px;
+    max-width: 100%;
+    margin: 0 auto;
     }
     label {
         font-weight: bold;
@@ -62,7 +75,17 @@
 </style>
 </head>
 <body>
-
+<div class="container">
+<div class="top-header">
+            <a class="logo" href="https://tool.blogspotvn.net" id="logo">
+                <div class="logotop">
+                    <i class="fab fa-blogger fa-4x"></i>
+                </div>
+                <div class="text">BlogspotVN.Net</div>
+            </a>
+        </div>
+    
+    <h1>Font Awesome Preview Tool</h1>
 <div>
     <label for="iconInput">Enter Font Awesome Icon Name:</label>
     <input type="text" id="iconInput" placeholder="e.g., tags">
@@ -136,7 +159,7 @@
     <div id="previewIcon" class="preview-icon"></div>
     <pre id="previewCode"></pre>
 </div>
-
+</div>
 <script>
     const iconInput = document.getElementById('iconInput');
     const styleSelect = document.getElementById('styleSelect');
