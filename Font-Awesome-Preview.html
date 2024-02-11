@@ -109,38 +109,80 @@
         </div>
 
         <h1>Font Awesome Preview Tool</h1>
-        <div>
-            <label for="iconInput">Enter Font Awesome Icon Name:</label>
-            <input type="text" id="iconInput" placeholder="e.g., tags">
-            <button id="searchButton">Search</button>
-        </div>
+<div>
+    <label for="iconInput">Icon Name:</label>
+    <input type="text" id="iconInput" placeholder="e.g., tags" autocomplete="off">
+    <button class="button" id="searchButton">Search</button>
+</div>
 
-        <div>
-            <label for="styleSelect">Choose Icon Style:</label>
-            <select id="styleSelect">
+<div>
+    <label for="styleSelect">Choose Icon Style:</label>
+    <select id="styleSelect">
         <option value="fas">Solid (fas)</option>
         <option value="far">Regular (far)</option>
         <option value="fal">Light (fal)</option>
         <option value="fab">Brands (fab)</option>
         <option value="fad">Duotone (fad)</option>
     </select>
-        </div>
+</div>
 
-        <div>
-            <label for="colorInput">Choose Icon Color:</label>
-            <input type="color" id="colorInput" value="#000000">
-        </div>
+<div id="colorOptions">
+    <label for="primaryColorInput">Icon Color:</label>
+    <input type="color" id="primaryColorInput" value="#333">
+</div>
 
-        <div>
-            <label for="sizeSelect">Choose Icon Size:</label>
-            <select id="sizeSelect">
+<div id="secondaryColorOptions" style="display: none;">
+    <label for="secondaryColorInput">Secondary Color:</label>
+    <input type="color" id="secondaryColorInput" value="#333">
+</div>
+
+<div id="swapOpacityOptions" style="margin-bottom: 10px; display: none;">
+	<label for="swapOpacityCheckbox">Swap Opacity</label>
+  <input type="checkbox" id="swapOpacityCheckbox">
+</div>  
+  
+<div id="opacityOptions" style="display: none;">
+    <label for="opacitySelect">Layer Opacity:</label>
+    <select id="opacitySelect">
+        <option value="0.1">0.1</option>
+        <option value="0.2">0.2</option>
+        <option value="0.3">0.3</option>
+        <option value="0.4">0.4</option>
+        <option value="0.5">0.5</option>
+        <option value="0.6">0.6</option>
+        <option value="0.7">0.7</option>
+        <option value="0.8">0.8</option>
+        <option value="0.9">0.9</option>
+        <option value="1.0" selected>1.0</option>
+    </select>
+</div>
+
+<div id="swappingOpacityOptions" style="display: none;">
+    <label for="swappingOpacitySelect">Opacity:</label>
+    <select id="swappingOpacitySelect">
+        <option value="0.1">0.1</option>
+        <option value="0.2">0.2</option>
+        <option value="0.3" selected>0.3</option>
+        <option value="0.4">0.4</option>
+        <option value="0.5">0.5</option>
+        <option value="0.6">0.6</option>
+        <option value="0.7">0.7</option>
+        <option value="0.8">0.8</option>
+        <option value="0.9">0.9</option>
+        <option value="1.0">1.0</option>
+    </select>
+</div>
+
+<div>
+    <label for="sizeSelect">Icon Size:</label>
+    <select id="sizeSelect">
         <option value="fa-xs">Extra Small</option>
         <option value="fa-sm">Small</option>
         <option value="">Normal</option>
         <option value="fa-lg">Large</option>
         <option value="fa-2x">2x</option>
         <option value="fa-3x">3x</option>
-        <option value="fa-4x">4x</option>
+        <option value="fa-4x" selected>4x</option>
         <option value="fa-5x">5x</option>
         <option value="fa-6x">6x</option>
         <option value="fa-7x">7x</option>
@@ -148,103 +190,643 @@
         <option value="fa-9x">9x</option>
         <option value="fa-10x">10x</option>
     </select>
-        </div>
+</div>
 
-        <div>
-            <label for="rotationSelect">Rotate Icon:</label>
-            <select id="rotationSelect">
+<div>
+    <label for="rotationSelect">Rotate Icon:</label>
+    <select id="rotationSelect">
         <option value="">None</option>
         <option value="fa-rotate-90">90°</option>
         <option value="fa-rotate-180">180°</option>
         <option value="fa-rotate-270">270°</option>
     </select>
-        </div>
+</div>
 
-        <div>
-            <label for="flipSelect">Flip Icon:</label>
-            <select id="flipSelect">
+<div>
+    <label for="flipSelect">Flip Icon:</label>
+    <select id="flipSelect">
         <option value="">None</option>
         <option value="fa-flip-horizontal">Horizontal</option>
         <option value="fa-flip-vertical">Vertical</option>
     </select>
-        </div>
+</div>
 
-        <div>
-            <label for="animateSelect">Animating Icons:</label>
-            <select id="animateSelect">
+<div>
+    <label for="animateSelect">Animating Icons:</label>
+    <select id="animateSelect">
         <option value="">None</option>
         <option value="fa-spin">Spin</option>
         <option value="fa-pulse">Pulse</option>
     </select>
-        </div>
+</div>
 
-        <div id="previewArea">
-            <div id="previewIcon" class="preview-icon"></div>
-            <pre id="previewCode"></pre>
-        </div>
-    </div>
-    <div class="copyright-container">
-        <p class="text-center ">©
-            <span id="current-year">2024</span>
-            <script type="text/javascript">
-                function getCurrentYear() {
-                var d = new Date();
-                return d.getFullYear();
-                }
-                el = document.getElementById('current-year');
-                el.innerHTML = getCurrentYear();
-            </script>
-            by
-            <a href="https://www.blogspotvn.net/">BlogspotVN.Net</a>
-        </p>
-    </div>
-    <script>
-        const iconInput = document.getElementById('iconInput');
-        const styleSelect = document.getElementById('styleSelect');
-        const colorInput = document.getElementById('colorInput');
-        const sizeSelect = document.getElementById('sizeSelect');
-        const rotationSelect = document.getElementById('rotationSelect');
-        const flipSelect = document.getElementById('flipSelect');
-        const animateSelect = document.getElementById('animateSelect');
-        const previewIcon = document.getElementById('previewIcon');
-        const previewCode = document.getElementById('previewCode');
-        const searchButton = document.getElementById('searchButton');
-    
-        function updatePreview() {
-            const iconName = iconInput.value.trim();
-            const styleClass = styleSelect.value;
-            const color = colorInput.value;
-            const sizeClass = sizeSelect.value;
-            const rotationClass = rotationSelect.value;
-            const flipClass = flipSelect.value;
-            const animateClass = animateSelect.value;
-    
-            // Xóa bỏ các lựa chọn không được chọn
-            const classesToRemove = ['', 'None'];
-            const filteredClasses = [styleClass, `fa-${iconName}`, sizeClass, rotationClass, flipClass, animateClass].filter(cls => !classesToRemove.includes(cls));
-    
-            previewIcon.innerHTML = `<i class="${filteredClasses.join(' ')}" style="color: ${color}"></i>`;
-            previewCode.textContent = `<i class="${filteredClasses.join(' ')}" style="color: ${color}"></i>`;
-        }
-    
-        iconInput.addEventListener('input', updatePreview);
-        styleSelect.addEventListener('change', updatePreview);
-        colorInput.addEventListener('input', updatePreview);
-        sizeSelect.addEventListener('change', updatePreview);
-        rotationSelect.addEventListener('change', updatePreview);
-        flipSelect.addEventListener('change', updatePreview);
-        animateSelect.addEventListener('change', updatePreview);
-    
-        searchButton.addEventListener('click', function() {
-            const searchKeyword = iconInput.value.trim();
-            const searchUrl = `https://fontawesome.com/v5/search?q=${searchKeyword}&o=r`;
-            window.open(searchUrl, '_blank');
+<button class='button' id="resetButton">Reset</button>
+
+
+<div id="previewArea">
+    <div id="previewIcon" class="preview-icon"></div>
+    <pre id="previewCode"></pre>
+</div>
+Hy vọng với công cụ này giúp anh em xem trước được icon sẽ hiển thị như thế nào trên blog/website để có quyết định sử dụng hay không. Chúc anh em một ngày vui! 😁
+
+<script>
+    const iconInput = document.getElementById('iconInput');
+    const styleSelect = document.getElementById('styleSelect');
+    const primaryColorInput = document.getElementById('primaryColorInput');
+    const secondaryColorInput = document.getElementById('secondaryColorInput');
+    const opacitySelect = document.getElementById('opacitySelect');
+    const swappingOpacitySelect = document.getElementById('swappingOpacitySelect');
+    const swapOpacityCheckbox = document.getElementById('swapOpacityCheckbox');
+    const sizeSelect = document.getElementById('sizeSelect');
+    const rotationSelect = document.getElementById('rotationSelect');
+    const flipSelect = document.getElementById('flipSelect');
+    const animateSelect = document.getElementById('animateSelect');
+    const previewIcon = document.getElementById('previewIcon');
+    const previewCode = document.getElementById('previewCode');
+    const searchButton = document.getElementById('searchButton');
+    const resetButton = document.getElementById('resetButton');
+    const suggestionContainer = document.createElement('div');
+    suggestionContainer.id = 'suggestionContainer';
+    iconInput.parentNode.appendChild(suggestionContainer);
+
+    // Danh sách icon
+    const iconList = [
+"address-book",
+"address-book-o",
+"address-card",
+"address-card-o",
+"adjust",
+"american-sign-language-interpreting",
+"anchor",
+"archive",
+"area-chart",
+"arrows",
+"arrows-h",
+"arrows-v",
+"asl-interpreting",
+"assistive-listening-systems",
+"asterisk",
+"at",
+"automobile",
+"audio-description",
+"balance-scale",
+"ban",
+"bank",
+"bar-chart",
+"bar-chart-o",
+"barcode",
+"bars",
+"bath",
+"bathtub",
+"battery-0",
+"battery-1",
+"battery-2",
+"battery-3",
+"battery-4",
+"battery-empty",
+"battery-full",
+"battery-half",
+"battery-quarter",
+"battery-three-quarters",
+"bed",
+"beer",
+"bell",
+"bell-o",
+"bell-slash",
+"bell-slash-o",
+"bicycle",
+"binoculars",
+"birthday-cake",
+"blind",
+"bolt",
+"bomb",
+"book",
+"bookmark",
+"bookmark-o",
+"braille",
+"briefcase",
+"bug",
+"building",
+"building-o",
+"bullhorn",
+"bullseye",
+"bus",
+"cab",
+"calculator",
+"calendar",
+"calendar-o",
+"calendar-check-o",
+"calendar-minus-o",
+"calendar-plus-o",
+"calendar-times-o",
+"camera",
+"camera-retro",
+"car",
+"caret-square-o-down",
+"caret-square-o-left",
+"caret-square-o-right",
+"caret-square-o-up",
+"cart-arrow-down",
+"cart-plus",
+"cc",
+"certificate",
+"check",
+"check-circle",
+"check-circle-o",
+"check-square",
+"check-square-o",
+"child",
+"circle",
+"circle-o",
+"circle-o-notch",
+"circle-thin",
+"clock-o",
+"clone",
+"close",
+"cloud",
+"cloud-download",
+"cloud-upload",
+"code",
+"code-fork",
+"coffee",
+"cog",
+"cogs",
+"comment",
+"comment-o",
+"comments",
+"comments-o",
+"commenting",
+"commenting-o",
+"compass",
+"copyright",
+"credit-card",
+"credit-card-alt",
+"creative-commons",
+"crop",
+"crosshairs",
+"cube",
+"cubes",
+"cutlery",
+"dashboard",
+"database",
+"deaf",
+"deafness",
+"desktop",
+"diamond",
+"dot-circle-o",
+"download",
+"drivers-license",
+"drivers-license-o",
+"edit",
+"ellipsis-h",
+"ellipsis-v",
+"envelope",
+"envelope-o",
+"envelope-open",
+"envelope-open-o",
+"envelope-square",
+"eraser",
+"exchange",
+"exclamation",
+"exclamation-circle",
+"exclamation-triangle",
+"external-link",
+"external-link-square",
+"eye",
+"eye-slash",
+"eyedropper",
+"fax",
+"female",
+"fighter-jet",
+"file-archive-o",
+"file-audio-o",
+"file-code-o",
+"file-excel-o",
+"file-image-o",
+"file-movie-o",
+"file-pdf-o",
+"file-photo-o",
+"file-picture-o",
+"file-powerpoint-o",
+"file-sound-o",
+"file-video-o",
+"file-word-o",
+"file-zip-o",
+"film",
+"filter",
+"fire",
+"fire-extinguisher",
+"flag",
+"flag-checkered",
+"flag-o",
+"flash",
+"flask",
+"folder",
+"folder-o",
+"folder-open",
+"folder-open-o",
+"frown-o",
+"futbol-o",
+"gamepad",
+"gavel",
+"gear",
+"gears",
+"genderless",
+"gift",
+"glass",
+"globe",
+"graduation-cap",
+"group",
+"hard-of-hearing",
+"hdd-o",
+"handshake-o",
+"hashtag",
+"headphones",
+"heart",
+"heart-o",
+"heartbeat",
+"history",
+"home",
+"hotel",
+"hourglass",
+"hourglass-1",
+"hourglass-2",
+"hourglass-3",
+"hourglass-end",
+"hourglass-half",
+"hourglass-o",
+"hourglass-start",
+"i-cursor",
+"id-badge",
+"id-card",
+"id-card-o",
+"image",
+"inbox",
+"industry",
+"info",
+"info-circle",
+"institution",
+"key",
+"keyboard-o",
+"language",
+"laptop",
+"leaf",
+"legal",
+"lemon-o",
+"level-down",
+"level-up",
+"life-bouy",
+"life-buoy",
+"life-ring",
+"life-saver",
+"lightbulb-o",
+"line-chart",
+"location-arrow",
+"lock",
+"low-vision",
+"magic",
+"magnet",
+"mail-forward",
+"mail-reply",
+"mail-reply-all",
+"male",
+"map",
+"map-o",
+"map-pin",
+"map-signs",
+"map-marker",
+"meh-o",
+"microchip",
+"microphone",
+"microphone-slash",
+"minus",
+"minus-circle",
+"minus-square",
+"minus-square-o",
+"mobile",
+"mobile-phone",
+"money",
+"moon-o",
+"mortar-board",
+"motorcycle",
+"mouse-pointer",
+"music",
+"navicon",
+"newspaper-o",
+"object-group",
+"object-ungroup",
+"paint-brush",
+"paper-plane",
+"paper-plane-o",
+"paw",
+"pencil",
+"pencil-square",
+"pencil-square-o",
+"percent",
+"phone",
+"phone-square",
+"photo",
+"picture-o",
+"pie-chart",
+"plane",
+"plug",
+"plus",
+"plus-circle",
+"plus-square",
+"plus-square-o",
+"podcast",
+"power-off",
+"print",
+"puzzle-piece",
+"qrcode",
+"question",
+"question-circle",
+"question-circle-o",
+"quote-left",
+"quote-right",
+"random",
+"recycle",
+"refresh",
+"registered",
+"remove",
+"reorder",
+"reply",
+"reply-all",
+"retweet",
+"road",
+"rocket",
+"rss",
+"rss-square",
+"s15",
+"search",
+"search-minus",
+"search-plus",
+"send",
+"send-o",
+"server",
+"share",
+"share-alt",
+"share-alt-square",
+"share-square",
+"share-square-o",
+"shield",
+"ship",
+"shopping-bag",
+"shopping-basket",
+"shopping-cart",
+"shower",
+"sign-in",
+"sign-out",
+"sign-language",
+"signal",
+"signing",
+"sitemap",
+"sliders",
+"smile-o",
+"snowflake-o",
+"soccer-ball-o",
+"sort",
+"sort-alpha-asc",
+"sort-alpha-desc",
+"sort-amount-asc",
+"sort-amount-desc",
+"sort-asc",
+"sort-desc",
+"sort-down",
+"sort-numeric-asc",
+"sort-numeric-desc",
+"sort-up",
+"space-shuttle",
+"spinner",
+"spoon",
+"square",
+"square-o",
+"star",
+"star-half",
+"star-half-empty",
+"star-half-full",
+"star-half-o",
+"star-o",
+"sticky-note",
+"sticky-note-o",
+"street-view",
+"suitcase",
+"sun-o",
+"support",
+"tablet",
+"tachometer",
+"tag",
+"tags",
+"tasks",
+"taxi",
+"television",
+"terminal",
+"thermometer",
+"thermometer-0",
+"thermometer-1",
+"thermometer-2",
+"thermometer-3",
+"thermometer-4",
+"thermometer-empty",
+"thermometer-full",
+"thermometer-half",
+"thermometer-quarter",
+"thermometer-three-quarters",
+"thumb-tack",
+"thumbs-down",
+"thumbs-o-up",
+"thumbs-up",
+"ticket",
+"times",
+"times-circle",
+"times-circle-o",
+"times-rectangle",
+"times-rectangle-o",
+"tint",
+"toggle-down",
+"toggle-left",
+"toggle-right",
+"toggle-up",
+"toggle-off",
+"toggle-on",
+"trademark",
+"trash",
+"trash-o",
+"tree",
+"trophy",
+"truck",
+"tty",
+"tv",
+"umbrella",
+"universal-access",
+"university",
+"unlock",
+"unlock-alt",
+"unsorted",
+"upload",
+"user",
+"user-circle",
+"user-circle-o",
+"user-o",
+"user-plus",
+"user-secret",
+"user-times",
+"users",
+"vcard",
+"vcard-o",
+"video-camera",
+"volume-control-phone",
+"volume-down",
+"volume-off",
+"volume-up",
+"warning",
+"wheelchair",
+"wheelchair-alt",
+"window-close",
+"window-close-o",
+"window-maximize",
+"window-minimize",
+"window-restore",
+"wifi",
+"wrench",
+    ];
+
+    // Hàm hiển thị gợi ý
+    function showSuggestions() {
+        const inputValue = iconInput.value.toLowerCase();
+        if (inputValue === '') { // Nếu input rỗng thì không hiển thị gợi ý
+            suggestionContainer.style.display = 'none'; // Ẩn suggestionContainer khi không có gợi ý
+        suggestionContainer.innerHTML = '';
+        return;
+    }
+    const suggestions = iconList.filter(icon => icon.includes(inputValue));
+    if (suggestions.length > 0) {
+        const suggestionHTML = suggestions.map(icon => `<div class="suggestion-item">${icon}</div>`).join('');
+        suggestionContainer.innerHTML = suggestionHTML;
+        suggestionContainer.style.display = 'block'; // Hiển thị suggestionContainer khi có gợi ý
+        const suggestionItems = document.querySelectorAll('.suggestion-item');
+        suggestionItems.forEach(item => {
+            item.addEventListener('click', function () {
+                iconInput.value = item.textContent;
+                suggestionContainer.innerHTML = '';
+                suggestionContainer.style.display = 'none'; // Ẩn suggestionContainer sau khi chọn gợi ý
+                updatePreview();
+            });
         });
-    
-        // Cập nhật ban đầu
-        updatePreview();
-    </script>
+    } else {
+        suggestionContainer.style.display = 'none'; // Ẩn suggestionContainer khi không có gợi ý
+        suggestionContainer.innerHTML = '';
+    }
+}
 
+    // Sự kiện khi nhập vào input
+    iconInput.addEventListener('input', showSuggestions);
+
+function updatePreview() {
+    const iconName = iconInput.value.trim();
+    const styleClass = styleSelect.value;
+    const primaryColor = primaryColorInput.value;
+    const secondaryColor = secondaryColorInput.value;
+    const opacity = opacitySelect.value;
+    const swappingOpacity = swappingOpacitySelect.value;
+    const swapOpacityChecked = swapOpacityCheckbox.checked;
+    const sizeClass = sizeSelect.value;
+    const rotationClass = rotationSelect.value;
+    const flipClass = flipSelect.value;
+    const animateClass = animateSelect.value;
+    let inlineStyle = `color: ${primaryColor};`;
+
+    let classesToAdd = [styleClass, `fa-${iconName}`, sizeClass, rotationClass, flipClass, animateClass];
+    classesToAdd = classesToAdd.filter(cls => cls !== ''); 
+
+    if (styleClass === 'fad') {
+        secondaryColorOptions.style.display = 'block';
+        opacityOptions.style.display = 'block';
+        swapOpacityOptions.style.display = 'block';
+        swappingOpacityOptions.style.display = 'block';
+        if (swapOpacityChecked) {
+            classesToAdd.push('fa-swap-opacity');
+        }
+        if (primaryColor !== '#333') {
+            inlineStyle += `--fa-primary-color: ${primaryColor};`;
+        }
+        if (secondaryColor !== '#333') {
+            inlineStyle += ` --fa-secondary-color: ${secondaryColor};`;
+        }
+        if (opacity !== '1.0') {
+            inlineStyle += ` --fa-primary-opacity: ${opacity};`;
+        }
+        if (swappingOpacity !== '0.3') {
+            inlineStyle += ` --fa-secondary-opacity: ${swappingOpacity};`;
+        }
+    } else {
+        secondaryColorOptions.style.display = 'none';
+        opacityOptions.style.display = 'none';
+        swapOpacityOptions.style.display = 'none';
+        swappingOpacityOptions.style.display = 'none';
+        if (opacity !== '1.0') {
+            inlineStyle += `--fa-primary-opacity: ${opacity};`;
+        }
+    }
+
+    const classString = classesToAdd.join(' '); // Join classes without spaces
+    previewIcon.innerHTML = `<i class="${classString}" style="${inlineStyle}"></i>`;
+    previewCode.textContent = `<i class="${classString}"${inlineStyle !== 'color: #000000;' ? ` style="${inlineStyle}"` : ''}></i>`;
+}
+
+  
+      function resetOptions() {
+        iconInput.value = '';
+        styleSelect.value = 'fas';
+        primaryColorInput.value = '#000000';
+        secondaryColorInput.value = '#000000';
+        opacitySelect.value = '1.0';
+        swappingOpacitySelect.value = '0.3';
+        swapOpacityCheckbox.checked = false;
+        sizeSelect.value = 'fa-4x';
+        rotationSelect.value = '';
+        flipSelect.value = '';
+        animateSelect.value = '';
+        updatePreview();
+       previewCode.textContent = '';
+    }
+
+    iconInput.addEventListener('input', updatePreview);
+    styleSelect.addEventListener('change', updatePreview);
+    primaryColorInput.addEventListener('input', updatePreview);
+    secondaryColorInput.addEventListener('input', updatePreview);
+    opacitySelect.addEventListener('change', updatePreview);
+    swappingOpacitySelect.addEventListener('change', updatePreview);
+    swapOpacityCheckbox.addEventListener('change', updatePreview);
+    sizeSelect.addEventListener('change', updatePreview);
+    rotationSelect.addEventListener('change', updatePreview);
+    flipSelect.addEventListener('change', updatePreview);
+    animateSelect.addEventListener('change', updatePreview);
+
+    searchButton.addEventListener('click', function () {
+        const searchKeyword = iconInput.value.trim();
+        const searchUrl = `https://fontawesome.com/v5/search?q=${searchKeyword}&o=r`;
+        window.open(searchUrl, '_blank');
+    });
+
+    updatePreview();
+  	resetButton.addEventListener('click', resetOptions);
+</script>
+<div class="copyright-container">
+      <p class="text-center ">©
+        <span id="current-year">2024</span>
+<script type="text/javascript">
+function getCurrentYear() {
+var d = new Date();
+return d.getFullYear();
+}
+el = document.getElementById('current-year');
+el.innerHTML = getCurrentYear();
+</script>
+        by
+        <a href="https://www.blogspotvn.net/ ">BlogspotVN.Net</a>
+      </p>
+    </div>
 </body>
 
 </html>
