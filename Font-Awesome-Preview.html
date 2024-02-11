@@ -35,15 +35,59 @@
      max-width: 100%;
      margin: 30px auto;
 }
- label {
+.container label {
      font-weight: bold;
      margin-right: 5px;
+   	display: block;
 }
- input[type="text"], input[type="color"], select {
+.container input[type="text"],.container input[type="color"], select {
      margin-bottom: 10px;
      padding: 5px;
      border-radius: 5px;
      border: 1px solid #ccc;
+}
+.container input[type="text"]{
+  min-width:169px;
+ }
+#previewArea {
+     margin-top: 20px;
+     align-items: center;
+}
+ .preview-icon {
+     text-align: center;
+     display: block;
+}
+ #previewCode {
+     font-family: Consolas, monospace;
+     font-size: 14px;
+     color: #444;
+}
+#suggestionContainer {
+    display:none;
+    max-height: 100px;
+    width: 174px;
+    overflow: auto;
+    margin: -15px 0px 30px;
+    border: 1px solid #ccc;
+    border-top: 0;
+    padding-left: 5px;
+    border-radius: 0px 0px 5px 5px;
+    background: #fff;
+    position: absolute;
+}
+#suggestionContainer::-webkit-scrollbar {
+    background: #ddd;
+    width: 5px;
+    border-radius: 50px;
+}
+#suggestionContainer::-webkit-scrollbar-thumb{
+    background: #c1c1c1;
+    border-radius: 50px;
+}  
+.suggestion-item:hover {
+    cursor: pointer;
+    color: #005b53;
+    font-weight: bold;
 }
  button {
      padding: 7px 15px;
