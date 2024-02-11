@@ -49,9 +49,15 @@
 .container input[type="text"]{
   min-width:169px;
  }
+.tool-left {
+    float: left;
+    width: 60%;
+}  
+  
 #previewArea {
-     margin-top: 20px;
-     align-items: center;
+    margin-top: 100px;
+    float: left;
+    width: 40%;
 }
  .preview-icon {
      text-align: center;
@@ -153,6 +159,7 @@
         </div>
 
         <h1>Font Awesome Preview Tool</h1>
+<div class='tool-left'>
 <div>
     <label for="iconInput">Icon Name:</label>
     <input type="text" id="iconInput" placeholder="e.g., tags" autocomplete="off">
@@ -263,17 +270,17 @@
         <option value="fa-pulse">Pulse</option>
     </select>
 </div>
+</div>
 
-<button class='button' id="resetButton">Reset</button>
 
 
 <div id="previewArea">
     <div id="previewIcon" class="preview-icon"></div>
     <pre id="previewCode"></pre>
+<button class='button' id="resetButton">Reset</button>
 </div>
 
-<script>
-    const iconInput = document.getElementById('iconInput');
+<script>    const iconInput = document.getElementById('iconInput');
     const styleSelect = document.getElementById('styleSelect');
     const primaryColorInput = document.getElementById('primaryColorInput');
     const secondaryColorInput = document.getElementById('secondaryColorInput');
@@ -734,32 +741,39 @@
 "wrench",
     ];
 
-let suggestionTimer; // Biến để lưu trữ hẹn giờ
+let suggestionTimeout; // Biến lưu trữ timeout
 
 // Hàm hiển thị gợi ý
 function showSuggestions() {
+    clearTimeout(suggestionTimeout); // Xóa timeout trước đó
     const inputValue = iconInput.value.toLowerCase();
     if (inputValue === '') { // Nếu input rỗng thì không hiển thị gợi ý
         suggestionContainer.style.display = 'none'; // Ẩn suggestionContainer khi không có gợi ý
-        clearTimeout(suggestionTimer); // Xóa hẹn giờ nếu có
+        suggestionContainer.innerHTML = '';
         return;
     }
-    
+
     const suggestions = iconList.filter(icon => icon.includes(inputValue));
     if (suggestions.length > 0) {
         const suggestionHTML = suggestions.map(icon => `<div class="suggestion-item">${icon}</div>`).join('');
         suggestionContainer.innerHTML = suggestionHTML;
         suggestionContainer.style.display = 'block'; // Hiển thị suggestionContainer khi có gợi ý
-        clearTimeout(suggestionTimer); // Xóa hẹn giờ nếu có
+        const suggestionItems = document.querySelectorAll('.suggestion-item');
+        suggestionItems.forEach(item => {
+            item.addEventListener('click', function () {
+                iconInput.value = item.textContent;
+                suggestionContainer.innerHTML = '';
+                suggestionContainer.style.display = 'none'; // Ẩn suggestionContainer sau khi chọn gợi ý
+                updatePreview();
+            });
+        });
     } else {
         suggestionContainer.style.display = 'none'; // Ẩn suggestionContainer khi không có gợi ý
         suggestionContainer.innerHTML = '';
-        clearTimeout(suggestionTimer); // Xóa hẹn giờ nếu có
-        return;
     }
-    
-    // Đặt hẹn giờ để ẩn gợi ý sau 3 giây
-    suggestionTimer = setTimeout(() => {
+
+    // Đặt timeout để ẩn phần gợi ý sau 3 giây
+    suggestionTimeout = setTimeout(function () {
         suggestionContainer.style.display = 'none';
         suggestionContainer.innerHTML = '';
     }, 3000);
@@ -856,8 +870,7 @@ function updatePreview() {
     });
 
     updatePreview();
-  	resetButton.addEventListener('click', resetOptions);
-</script>
+  	resetButton.addEventListener('click', resetOptions);</script>
 <div class="copyright-container">
       <p class="text-center ">©
         <span id="current-year">2024</span>
