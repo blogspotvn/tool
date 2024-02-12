@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='/images/favicon.ico' rel='icon' type='image/x-icon'>
+    <link href='https://cdn.jsdelivr.net/gh/blogspotvn/tool/css/font-awesome/5.15.4/css/all.css' rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="/css/style.css">
+    <title>CSS sprites tool</title>
+   </head>
+<style>
+.container code, #tool-credit {
+  background-color: rgba(0, 131, 143, 0.09);
+  color: #007580;
+  font-weight: bold;
+  padding: 2px;
+}
+#tool-credit {
+  text-align: center;
+}
+.form-group {
+  margin: 20px 0;
+}
+.form-group label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+.form-group input[type="text"], .form-group input[type="number"] {
+  width: 200px;
+  padding: 5px;
+  border: 1px solid #cccccc;
+  border-radius: 3px;
+}
+.form-group input[type="range"] {
+  width: 300px;
+  margin-top: 5px;
+}
+.form-group .slider-value {
+  display: inline-block;
+  width: 40px;
+  text-align: right;
+  margin-left: 5px;
+}
+#sprite-preview {
+  display: none;
+  border: 1px solid #cccccc;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+}
+#css-code {
+  display: none;
+}
+.slider-value {
+  display: inline-block;
+  width: 40px;
+}
+.kiss {
+  display: inline-block;
+  background-position: -110px -2px;
+  width: 28px;
+  height: 28px;
+}
+.cuoi {
+  display: inline-block;
+  background-position: -4px -2px;
+  width: 28px;
+  height: 28px;
+}
+.sprites {
+  background-image: url(https://lh3.googleusercontent.com/-NRqPY2qHPsk/ZKOXHIPvdII/AAAAAAAAK6E/bfIC5D2HjQQdzbEca5ymqY-UiO7N0UF2ACNcBGAsYHQ/s0/bieu-tuong-icons.png);
+}
+</style>
+<body>
+    <div class="top-header">
+            <a class="logo" href="https://www.blogspotvn.net" id="logo">
+                <div class="logotop">
+                    <i class="fab fa-blogger fa-3x"></i>
+                </div>
+                <div class="text">BlogspotVN.Net</div>
+            </a>
+        </div>
+    <header>
+        <h1>CSS sprites tool</h1>
+    </header>
+    <div class="form-group">
+        <label for="upload-image">Upload Image:</label>
+        <input type="file" id="upload-image" accept="image/*">
+    </div>
+
+    <div id="sprite-preview"></div>
+
+    <div class="form-group">
+        <label for="class-name">Class Name:</label>
+        <input type="text" id="class-name">
+    </div>
+
+    <div class="form-group">
+        <label for="bg-position-x">Background Position X:</label>
+        <input type="range" id="bg-position-x" min="-500" max="500" value="0">
+        <input type="number" id="bg-position-x-value" min="-5000" max="5000" value="0">
+    </div>
+
+    <div class="form-group">
+        <label for="bg-position-y">Background Position Y:</label>
+        <input type="range" id="bg-position-y" min="-500" max="500" value="0">
+        <input type="number" id="bg-position-y-value" min="-5000" max="5000" value="0">
+    </div>
+
+    <div class="form-group">
+        <label for="width">Width:</label>
+        <input type="number" id="width" min="1">
+    </div>
+
+    <div class="form-group">
+        <label for="height">Height:</label>
+        <input type="number" id="height" min="1">
+    </div>
+
+    <pre id="css-code"></pre>
+</div>
+    <script>
+var _0x8b50=["\x75\x70\x6C\x6F\x61\x64\x2D\x69\x6D\x61\x67\x65","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x73\x70\x72\x69\x74\x65\x2D\x70\x72\x65\x76\x69\x65\x77","\x63\x6C\x61\x73\x73\x2D\x6E\x61\x6D\x65","\x62\x67\x2D\x70\x6F\x73\x69\x74\x69\x6F\x6E\x2D\x78","\x62\x67\x2D\x70\x6F\x73\x69\x74\x69\x6F\x6E\x2D\x79","\x62\x67\x2D\x70\x6F\x73\x69\x74\x69\x6F\x6E\x2D\x78\x2D\x76\x61\x6C\x75\x65","\x62\x67\x2D\x70\x6F\x73\x69\x74\x69\x6F\x6E\x2D\x79\x2D\x76\x61\x6C\x75\x65","\x77\x69\x64\x74\x68","\x68\x65\x69\x67\x68\x74","\x63\x73\x73\x2D\x63\x6F\x64\x65","\x64\x69\x76","\x63\x72\x65\x61\x74\x65\x45\x6C\x65\x6D\x65\x6E\x74","\x74\x65\x78\x74\x43\x6F\x6E\x74\x65\x6E\x74","\x54\x68\x65\x20\x53\x70\x72\x69\x74\x65\x20\x53\x68\x65\x65\x74\x20\x50\x72\x65\x76\x69\x65\x77\x20\x54\x6F\x6F\x6C\x20\x69\x73\x20\x63\x72\x65\x61\x74\x65\x64\x20\x62\x79\x20\x48\x75\x79\x44\x43\x2E\x4E\x65\x74\x2E","\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64","\x73\x74\x79\x6C\x65","\x72\x67\x62\x61\x28\x30\x2C\x31\x33\x31\x2C\x31\x34\x33\x2C\x30\x2E\x30\x39\x29","\x66\x6F\x6E\x74\x57\x65\x69\x67\x68\x74","\x62\x6F\x6C\x64","\x63\x6F\x6C\x6F\x72","\x23\x30\x30\x37\x35\x38\x30","\x6D\x61\x72\x67\x69\x6E","\x31\x30\x70\x78","\x70\x61\x64\x64\x69\x6E\x67","\x35\x70\x78","\x74\x65\x78\x74\x41\x6C\x69\x67\x6E","\x63\x65\x6E\x74\x65\x72","\x6E\x65\x78\x74\x53\x69\x62\x6C\x69\x6E\x67","\x69\x6E\x73\x65\x72\x74\x42\x65\x66\x6F\x72\x65","\x70\x61\x72\x65\x6E\x74\x4E\x6F\x64\x65","\x63\x68\x61\x6E\x67\x65","\x66\x69\x6C\x65\x73","\x74\x61\x72\x67\x65\x74","\x6F\x6E\x6C\x6F\x61\x64","\x73\x72\x63","\x72\x65\x73\x75\x6C\x74","\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x49\x6D\x61\x67\x65","\x75\x72\x6C\x28","\x29","\x62\x61\x63\x6B\x67\x72\x6F\x75\x6E\x64\x53\x69\x7A\x65","","\x70\x78\x20","\x70\x78","\x76\x61\x6C\x75\x65","\x6D\x69\x6E","\x6D\x61\x78","\x64\x69\x73\x70\x6C\x61\x79","\x62\x6C\x6F\x63\x6B","\x72\x65\x61\x64\x41\x73\x44\x61\x74\x61\x55\x52\x4C","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x69\x6E\x70\x75\x74"];const uploadImage=document[_0x8b50[1]](_0x8b50[0]);const spritePreview=document[_0x8b50[1]](_0x8b50[2]);const className=document[_0x8b50[1]](_0x8b50[3]);const bgPositionX=document[_0x8b50[1]](_0x8b50[4]);const bgPositionY=document[_0x8b50[1]](_0x8b50[5]);const bgPositionXValue=document[_0x8b50[1]](_0x8b50[6]);const bgPositionYValue=document[_0x8b50[1]](_0x8b50[7]);const width=document[_0x8b50[1]](_0x8b50[8]);const height=document[_0x8b50[1]](_0x8b50[9]);const cssCode=document[_0x8b50[1]](_0x8b50[10]);const toolCredit=document[_0x8b50[12]](_0x8b50[11]);toolCredit[_0x8b50[13]]= _0x8b50[14];toolCredit[_0x8b50[16]][_0x8b50[15]]= _0x8b50[17];toolCredit[_0x8b50[16]][_0x8b50[18]]= _0x8b50[19];toolCredit[_0x8b50[16]][_0x8b50[20]]= _0x8b50[21];toolCredit[_0x8b50[16]][_0x8b50[22]]= _0x8b50[23];toolCredit[_0x8b50[16]][_0x8b50[24]]= _0x8b50[25];toolCredit[_0x8b50[16]][_0x8b50[26]]= _0x8b50[27];spritePreview[_0x8b50[30]][_0x8b50[29]](toolCredit,cssCode[_0x8b50[28]]);uploadImage[_0x8b50[50]](_0x8b50[31],function(_0x839fxc){const _0x839fxd=_0x839fxc[_0x8b50[33]][_0x8b50[32]][0];const _0x839fxe= new FileReader();_0x839fxe[_0x8b50[34]]= function(_0x839fxf){const _0x839fx10= new Image();_0x839fx10[_0x8b50[35]]= _0x839fxf[_0x8b50[33]][_0x8b50[36]];_0x839fx10[_0x8b50[34]]= function(){spritePreview[_0x8b50[16]][_0x8b50[37]]= `${_0x8b50[38]}${_0x839fxf[_0x8b50[33]][_0x8b50[36]]}${_0x8b50[39]}`;spritePreview[_0x8b50[16]][_0x8b50[40]]= `${_0x8b50[41]}${_0x839fx10[_0x8b50[8]]}${_0x8b50[42]}${_0x839fx10[_0x8b50[9]]}${_0x8b50[43]}`;spritePreview[_0x8b50[16]][_0x8b50[8]]= `${_0x8b50[41]}${_0x839fx10[_0x8b50[8]]}${_0x8b50[43]}`;spritePreview[_0x8b50[16]][_0x8b50[9]]= `${_0x8b50[41]}${_0x839fx10[_0x8b50[9]]}${_0x8b50[43]}`;width[_0x8b50[44]]= _0x839fx10[_0x8b50[8]];height[_0x8b50[44]]= _0x839fx10[_0x8b50[9]];bgPositionX[_0x8b50[45]]=  -_0x839fx10[_0x8b50[8]];bgPositionX[_0x8b50[46]]= _0x839fx10[_0x8b50[8]];bgPositionY[_0x8b50[45]]=  -_0x839fx10[_0x8b50[9]];bgPositionY[_0x8b50[46]]= _0x839fx10[_0x8b50[9]];spritePreview[_0x8b50[16]][_0x8b50[47]]= _0x8b50[48];cssCode[_0x8b50[16]][_0x8b50[47]]= _0x8b50[48];toolCredit[_0x8b50[16]][_0x8b50[47]]= _0x8b50[48];updatePreview()}};_0x839fxe[_0x8b50[49]](_0x839fxd)});bgPositionX[_0x8b50[50]](_0x8b50[51],function(){bgPositionXValue[_0x8b50[44]]= bgPositionX[_0x8b50[44]];updatePreview()});bgPositionY[_0x8b50[50]](_0x8b50[51],function(){bgPositionYValue[_0x8b50[44]]= bgPositionY[_0x8b50[44]];updatePreview()});bgPositionXValue[_0x8b50[50]](_0x8b50[51],function(){bgPositionX[_0x8b50[44]]= bgPositionXValue[_0x8b50[44]];updatePreview()});bgPositionYValue[_0x8b50[50]](_0x8b50[51],function(){bgPositionY[_0x8b50[44]]= bgPositionYValue[_0x8b50[44]];updatePreview()});className[_0x8b50[50]](_0x8b50[51],updatePreview);width[_0x8b50[50]](_0x8b50[51],updatePreview);height[_0x8b50[50]](_0x8b50[51],updatePreview)
+      
+        function updatePreview() {
+            const positionX = bgPositionX.value;
+            const positionY = bgPositionY.value;
+            const widthValue = width.value + 'px';
+            const heightValue = height.value + 'px';
+            const cssClassName = className.value;
+
+            spritePreview.style.backgroundPosition = `${positionX}px ${positionY}px`;
+            spritePreview.style.width = widthValue;
+            spritePreview.style.height = heightValue;
+
+        const css = `.${cssClassName} {\n    display: inline-block;\n    background-position: ${positionX}px ${positionY}px;\n    width: ${widthValue};\n    height: ${heightValue};\n}`;
+        cssCode.textContent = css;
+        }
+    </script>
+</body>
+
+</html>
