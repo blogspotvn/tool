@@ -123,7 +123,21 @@
         <textarea id="generatedLink" onclick="copyToClipboard()"></textarea>
     </div>
 
-
+    <div class="copyright-container">
+        <p class="text-center ">©
+            <span id="current-year">2024</span>
+                <script type="text/javascript">
+                    function getCurrentYear() {
+                    var d = new Date();
+                    return d.getFullYear();
+                    }
+                    el = document.getElementById('current-year');
+                    el.innerHTML = getCurrentYear();
+                </script>
+            by
+            <a href="https://www.blogspotvn.net/ ">BlogspotVN.Net</a>
+        </p>
+    </div>
     <script>
         function generateLink() {
             var url = document.getElementById("url").value;
