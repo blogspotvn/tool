@@ -16,8 +16,9 @@
         .container {
             background-color: white;
             padding: 20px;
-            margin: auto;
-            width: 50%;
+            margin: 0 auto;
+            width: 1024px;
+            max-width: 100%;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
@@ -86,26 +87,20 @@
         .alert.show {
             opacity: 1;
         }
-        
-        @media screen and (max-width: 768px) {
-            .container{
-                width: 95%;
-            }
-        }
     </style>
 </head>
 
 <body>
-    <div class="container">
-         <div class="top-header">
-            <a class="logo" href="https://tool.blogspotvn.net" id="logo">
-                <div class="logotop">
-                    <i class="fab fa-blogger fa-3x"></i>
-                </div>
-                <div class="text">BlogspotVN.Net</div>
-            </a>
-        </div>
-        
+    <div class="top-header">
+        <a class="logo" href="https://tool.blogspotvn.net" id="logo">
+            <div class="logotop">
+                <i class="fab fa-blogger fa-3x"></i>
+            </div>
+            <div class="text">BlogspotVN.Net</div>
+        </a>
+    </div>
+    
+    <div class="container">        
         <h2>Link Generator Tool</h2>
         <label for="url">URL:</label><br>
         <input type="text" id="url" name="url" autocomplete="off"><br>
