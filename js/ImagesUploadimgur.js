@@ -146,8 +146,8 @@
 
             events.map(function (event) {
                 zone.addEventListener(event, function (e) {
-                    e.preventDefault(); // Ngăn chặn hành vi mặc định của trình duyệt
-                    e.stopPropagation(); // Ngăn chặn sự kiện lan truyền lên các phần tử cha
+                    e.preventDefault(); 
+                    e.stopPropagation(); 
                     
                     if (e.target && e.target.nodeName === 'INPUT' && e.target.type === 'file') {
                         if (event === 'dragleave' || event === 'drop') {
