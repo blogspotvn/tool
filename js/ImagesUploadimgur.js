@@ -83,6 +83,7 @@
             Array.prototype.forEach.call(this.infoimg, function (zone) {
                 zone.appendChild(p1);
                 zone.appendChild(p2);
+                zone.appendChild(p3);
             }.bind(this));
             Array.prototype.forEach.call(this.dropzone, function (zone) {
                 zone.appendChild(input);
