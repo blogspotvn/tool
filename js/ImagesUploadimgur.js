@@ -72,7 +72,7 @@
             xhttp = null;
         },
         createDragZone: function () {
-            var p1, p2, p3, input; 
+            var p1, p2, p3, input;
             p1 = this.createEls('p', {}, 'Kéo file ảnh vào đây');
             p2 = this.createEls('p', {}, 'Hoặc click để chọn ảnh');
             var icon = this.createEls('i', {className: 'fas fa-images fa-3x'});
@@ -85,6 +85,11 @@
                 zone.appendChild(p1);
                 zone.appendChild(p2);
                 zone.appendChild(p3); 
+            }.bind(this));
+            Array.prototype.forEach.call(this.dropzone, function (zone) {
+                zone.appendChild(input);
+                this.status(zone);
+                this.upload(zone);
             }.bind(this));
         },
         loading: function () {
@@ -141,6 +146,9 @@
 
             events.map(function (event) {
                 zone.addEventListener(event, function (e) {
+                    e.preventDefault(); // Ngăn chặn hành vi mặc định của trình duyệt
+                    e.stopPropagation(); // Ngăn chặn sự kiện lan truyền lên các phần tử cha
+                    
                     if (e.target && e.target.nodeName === 'INPUT' && e.target.type === 'file') {
                         if (event === 'dragleave' || event === 'drop') {
                             e.target.parentNode.classList.remove('dropzone-dragging');
@@ -163,3 +171,4 @@
 
     return Imgur;
 }));
+
