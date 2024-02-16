@@ -72,23 +72,19 @@
             xhttp = null;
         },
         createDragZone: function () {
-            var p1, p2, p3, input;
-
-                p1 = this.createEls('p', {}, 'Kéo file ảnh vào đây');
-                p2 = this.createEls('p', {}, 'Hoặc click để chọn ảnh');
-                p3 = this.createEls('i class="fas fa-images fa-3x"', {}, '');
+            var p1, p2, input;
+            p1 = this.createEls('p', {}, 'Kéo file ảnh vào đây');
+            p2 = this.createEls('p', {}, 'Hoặc click để chọn ảnh');
+            var icon = this.createEls('i', {className: 'fas fa-images fa-3x'});
+            p3 = this.createEls('p', {}, '');
+            p3.appendChild(icon);
             
             input = this.createEls('input', {type: 'file', className: 'input', accept: 'image/*'});
-
+            
             Array.prototype.forEach.call(this.infoimg, function (zone) {
                 zone.appendChild(p1);
                 zone.appendChild(p2);
-                zone.appendChild(p3);
-            }.bind(this));
-            Array.prototype.forEach.call(this.dropzone, function (zone) {
-                zone.appendChild(input);
-                this.status(zone);
-                this.upload(zone);
+                zone.appendChild(p3); 
             }.bind(this));
         },
         loading: function () {
