@@ -72,7 +72,7 @@
             xhttp = null;
         },
         createDragZone: function () {
-            var p1, p2, input;
+            var p1, p2, p3, input; 
             p1 = this.createEls('p', {}, 'Kéo file ảnh vào đây');
             p2 = this.createEls('p', {}, 'Hoặc click để chọn ảnh');
             var icon = this.createEls('i', {className: 'fas fa-images fa-3x'});
