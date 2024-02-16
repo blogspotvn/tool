@@ -76,7 +76,7 @@
 
                 p1 = this.createEls('p', {}, 'Kéo file ảnh vào đây');
                 p2 = this.createEls('p', {}, 'Hoặc click để chọn ảnh');
-                p3 = this.createEls('p', {}, '<i class="fas fa-images fa-3x"></i>');
+                p3 = this.createEls('i class="fas fa-images fa-3x"', {}, '');
             
             input = this.createEls('input', {type: 'file', className: 'input', accept: 'image/*'});
 
