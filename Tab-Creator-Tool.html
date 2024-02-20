@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href='https://cdn.jsdelivr.net/gh/blogspotvn/tool/css/font-awesome/5.15.4/css/all.css' rel='stylesheet' type='text/css'/> 
+<link href='/images/favicon.ico' rel='icon' type='image/x-icon'>
+<title>Tab Creator Tool</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+    }
+    .container {
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 1024px;
+        max-width: 90%;
+        margin: 30px auto;
+    }
+    .tab-input {
+        margin-bottom: 10px;
+    }
+    .tab-input label {
+        display: block;
+        margin-bottom: 5px;
+    }
+    .tab-input input[type="text"],
+    .tab-input textarea {
+        width: calc(100% - 90px);
+        margin-bottom: 10px;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+    .tab-input button {
+        display: inline-block;
+        padding: 8px 16px;
+        border: none;
+        background-color: #dc3545;
+        color: #fff;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 14px;
+      	float: right;
+    }
+    .tab-wrapper {
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+    .tab-wrapper li {
+        display: inline-block;
+        margin-right: 10px;
+    }
+    .tab-wrapper li a {
+        text-decoration: none;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px 4px 0 0;
+        background-color: #f9f9f9;
+        color: #333;
+        transition: background-color 0.3s;
+    }
+    .tab-wrapper li a:hover {
+        background-color: #e9e9e9;
+    }
+    .tab-content {
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-top: none;
+        border-radius: 0 0 4px 4px;
+        background-color: #fff;
+    }
+    .tab-close {
+        cursor: pointer;
+        margin-left: 5px;
+        color: #999;
+    }
+    .tab-close:hover {
+        color: #333;
+    }
+    .html-output {
+        margin-top: 20px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        padding: 10px;
+        background-color: #f9f9f9;
+        white-space: pre-wrap;
+    }
+  .button {
+    border-radius: 3px;
+    background: #005b53;
+    color: #fff!important;
+    text-decoration: none!important;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    border: 0;
+}
+  .button-reset {
+    border-radius: 3px;
+    background: #ff0000;
+    color: #fff!important;
+    text-decoration: none!important;
+    cursor: pointer;
+    padding: 5px 10px;
+    margin-bottom: 5px;
+    border: 0;
+}
+  .copyright-container {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #ddd;
+    color: #333;
+    font-size: 15px;
+    text-align: center;
+    padding: 1px ;
+}
+</style>
+</head>
+<body>
+<div class="top-header">
+            <a class="logo" href="https://tool.blogspotvn.net" id="logo">
+                <div class="logotop">
+                    <i class="fab fa-blogger fa-3x"></i>
+                </div>
+                <div class="text">BlogspotVN.Net</div>
+            </a>
+</div>
+<div class="container">
+    <h2>Tab Creator Tool</h2>
+    
+    <div id="tab-inputs">
+        <div class="tab-input" id="tab-input-1">
+            <label for="tab-name-1">Nhập tên tab 1:</label>
+            <input type="text" class="tab-name" value="Tab 1">
+            <textarea class="tab-content" rows="4" cols="50">Nội dung tab 1</textarea>
+            <button onclick="deleteTab(this)"><i class="fad fa-trash-alt"></i></button>
+        </div>
+    </div>
+
+    <button class='button' onclick="addTab()">Thêm tab</button><br>
+  
+    <button class='button-reset' onclick="resetTabs()">Reset</button>
+    <button class='button' onclick="generateHTML()">Tạo mã HTML</button>
+
+    <pre class="html-output" id="generated-html"></pre>
+</div>
+         <div class="copyright-container">
+            <p class="text-center ">©
+                <span id="current-year">2024</span>
+                <script type="text/javascript">
+                    function getCurrentYear() {
+                    var d = new Date();
+                    return d.getFullYear();
+                    }
+                    el = document.getElementById('current-year');
+                    el.innerHTML = getCurrentYear();
+                </script>
+                by
+                <a href="https://www.blogspotvn.net/ ">BlogspotVN.Net</a>
+            </p>
+        </div>   
+<script>
+    function addTab() {
+        const tabInputs = document.getElementById('tab-inputs');
+        const tabCounter = tabInputs.childElementCount + 1;
+
+        const div = document.createElement('div');
+        div.className = 'tab-input';
+        div.innerHTML = `
+            <label for="tab-name-${tabCounter}">Nhập tên tab ${tabCounter}:</label>
+            <input type="text" class="tab-name" value="Tab ${tabCounter}">
+            <textarea class="tab-content" rows="4" cols="50">Nội dung tab ${tabCounter}</textarea>
+            <button onclick="deleteTab(this)"><i class="fad fa-trash-alt"></i></button>
+        `;
+        tabInputs.appendChild(div);
+
+        updateTabLinks();
+    }
+
+    function deleteTab(button) {
+        const tabInput = button.parentNode;
+        tabInput.parentNode.removeChild(tabInput);
+        updateTabLinks();
+    }
+
+    function updateTabLinks() {
+        const tabWrapper = document.getElementById('tab-wrapper');
+        tabWrapper.innerHTML = '';
+
+        const tabInputs = document.querySelectorAll('.tab-input');
+        tabInputs.forEach((tabInput, index) => {
+            const tabNumber = index + 1;
+            const tabName = tabInput.querySelector('.tab-name').value;
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.href = `#tab${tabNumber}`;
+            a.textContent = tabName;
+            li.appendChild(a);
+            tabWrapper.appendChild(li);
+        });
+    }
+
+    function generateHTML() {
+        const tabInputs = document.querySelectorAll('.tab-input');
+        if (tabInputs.length === 0) {
+            alert("Vui lòng thêm ít nhất một tab trước khi tạo mã HTML.");
+            return;
+        }
+
+        let html = '<div id="tab-outer">\n';
+        html += '    <ul id="tab-wrapper">\n';
+        tabInputs.forEach((tabInput, index) => {
+            const tabNumber = index + 1;
+            const tabName = tabInput.querySelector('.tab-name').value;
+            html += `        <li><a href="#tab${tabNumber}">${tabName}</a></li>\n`;
+        });
+        html += '    </ul>\n';
+        html += '    <div id="tab-body">\n';
+        tabInputs.forEach((tabInput, index) => {
+            const tabNumber = index + 1;
+            const tabContent = tabInput.querySelector('.tab-content').value;
+            html += `        <div id="tab${tabNumber}">${tabContent}</div>\n`;
+        });
+        html += '    </div>\n';
+        html += '</div>';
+
+        const generatedHTML = document.getElementById('generated-html');
+        generatedHTML.textContent = html;
+    }
+
+    function resetTabs() {
+        const tabInputs = document.getElementById('tab-inputs');
+        tabInputs.innerHTML = `
+            <div class="tab-input" id="tab-input-1">
+                <label for="tab-name-1">Nhập tên tab 1:</label>
+                <input type="text" class="tab-name" value="Tab 1">
+                <textarea class="tab-content" rows="4" cols="50">Nội dung tab 1</textarea>
+                <button onclick="deleteTab(this)"><i class="fad fa-trash-alt"></i></button>
+            </div>
+        `;
+        const generatedHTML = document.getElementById('generated-html');
+        generatedHTML.textContent = '';
+        updateTabLinks();
+    }
+</script>
+
+</body>
+</html>
