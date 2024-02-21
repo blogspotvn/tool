@@ -21,6 +21,39 @@
         max-width: 90%;
         margin: 30px auto;
     }
+     #tab-outer-demo {
+     position:relative;
+     font:normal 12px Arial,Sans-Serif;
+}
+ #tab-wrapper-demo {
+     list-style: none;
+     height: 30px;
+     margin: 0;
+     padding: 0;
+}
+ #tab-wrapper-demo li {
+     margin-right: 2px;
+     float:left;
+     font-weight:bold;
+}
+ #tab-wrapper-demo li a {
+     display:block;
+     padding:0px 15px;
+     line-height:30px;
+     text-decoration:none;
+     color: #005b53;
+     background-color: #99bdba;
+}
+ #tab-wrapper-demo li.active a {
+     background-color: #005b53;
+     color: #fff;
+}
+ #tab-body-demo > div {
+     background-color: #005b53;
+     color:white;
+     padding:10px 15px;
+     border-bottom: 4px solid #99bdba;
+}
     .tab-input {
         margin-bottom: 10px;
     }
@@ -156,6 +189,93 @@
     <button class='button' onclick="generateHTML()">Tạo mã HTML</button>
 
     <pre class="html-output" id="generated-html"></pre>
+
+<h2>Demo</h2>
+    <div id="tab-outer-demo">
+    <ul id="tab-wrapper-demo">
+        <li><a href="#tab0">Giới thiệu</a></li>
+        <li><a href="#tab1">HTML</a></li>
+        <li><a href="#tab2">CSS</a></li>
+        <li><a href="#tab3">JS</a></li>
+    </ul>
+    <div id="tab-body-demo">
+        <div id="tab0">
+            <ul>
+                <li>Sử dụng các đoạn code ở các tab HTML, CSS, JS để tạo ra nội dung các tab như Demo</li>
+                <li>Bạn có thể sử dụng tool bên dưới để tạo nhanh nội dung HTML</li>
+            </ul>
+        </div>
+        <div id="tab1">
+            <pre>&lt;div id="tab-outer"&gt;
+    &lt;ul id="tab-wrapper"&gt;
+        &lt;li&gt;&lt;a href="#tab1"&gt;Tab 1&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab2"&gt;Tab 2&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#tab3"&gt;Tab 3&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div id="tab-body"&gt;
+        &lt;div id="tab1"&gt;Nội dung tab 1&lt;/div&gt;
+        &lt;div id="tab2"&gt;Nội dung tab 2&lt;/div&gt;
+        &lt;div id="tab3"&gt;Nội dung tab 3&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+        </div>
+        <div id="tab2">
+            <pre>#tab-outer {
+  position:relative;
+  font:normal 12px Arial,Sans-Serif;
+}
+
+
+#tab-wrapper {
+  list-style:none;
+  height:30px;
+  margin: 0;
+  padding: 0;
+}
+
+#tab-wrapper li {
+  margin-right: 2px;
+  float:left;
+  font-weight:bold;
+}
+
+#tab-wrapper li a {
+  display:block;
+  padding:0px 15px;
+  line-height:30px;
+  text-decoration:none;
+  color: #005b53;
+  background-color: #99bdba;
+}
+
+#tab-wrapper li.active a {
+  background-color: #005b53;
+  color: #fff;
+}
+
+#tab-body > div {
+  background-color: #005b53;
+  color:white;
+  padding:10px 15px;
+  border-bottom: 4px solid #99bdba;
+}</pre>
+        </div>
+        <div id="tab3">
+            <pre>$('#tab-wrapper li:first').addClass('active');
+$('#tab-body &gt; div').hide();
+$('#tab-body &gt; div:first').show();
+$('#tab-wrapper a').click(function() {
+    $('#tab-wrapper li').removeClass('active');
+    $(this).parent().addClass('active');
+    var activeTab = $(this).attr('href');
+    $('#tab-body &gt; div:visible').hide();
+    $(activeTab).show();
+    return false;
+});</pre>
+        </div>
+    </div>
+</div>
+
 </div>
          <div class="copyright-container">
             <p class="text-center ">©
@@ -255,6 +375,18 @@
         generatedHTML.textContent = '';
         updateTabLinks();
     }
+
+    $('#tab-wrapper-demo li:first').addClass('active');
+    $('#tab-body-demo > div').hide();
+    $('#tab-body-demo > div:first').show();
+    $('#tab-wrapper-demo a').click(function() {
+        $('#tab-wrapper-demo li').removeClass('active');
+        $(this).parent().addClass('active');
+        var activeTab = $(this).attr('href');
+        $('#tab-body-demo > div:visible').hide();
+        $(activeTab).show();
+        return false;
+    });
 </script>
 
 </body>
