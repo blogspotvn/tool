@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JavaScript Minifier</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    textarea {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 10px;
+    }
+    button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h2>JavaScript Minifier</h2>
+<textarea id="input" placeholder="Paste your JavaScript code here..."></textarea>
+<button onclick="minify()">Minify</button>
+<textarea id="output" placeholder="Minified JavaScript code will appear here..." readonly></textarea>
+
+<script>
+function minify() {
+    var input = document.getElementById('input').value;
+    var output = document.getElementById('output');
+    
+    // Kiểm tra xem người dùng đã nhập mã JavaScript hay chưa
+    if (input.trim() === '') {
+        alert('Please enter JavaScript code to minify.');
+        return;
+    }
+    
+    // Sử dụng Terser để rút gọn mã JavaScript
+    try {
+        var result = Terser.minify(input);
+        if (result.error) {
+            output.value = 'Error: ' + result.error;
+        } else {
+            output.value = result.code;
+        }
+    } catch (error) {
+        output.value = 'Error: ' + error.message;
+    }
+}
+</script>
+
+<!-- Đảm bảo thư viện Terser đã được tải trước khi sử dụng -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/terser/5.10.0/terser.min.js"></script>
+
+</body>
+</html>
