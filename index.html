@@ -8,231 +8,164 @@
 <link href="https://cdn.jsdelivr.net/gh/blogspotvn/tool/css/font-awesome/5.15.4/css/all.css" rel="stylesheet" type="text/css"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;800&display=swap" rel="stylesheet">
-
 <style>
 :root{
   --bg:#050607;
-  --grid:#0b0f10;
-  --card:#0a0d10cc;
   --line:#0f1a17;
+  --card:#0a0d10cc;
   --txt:#c7f5d1;
   --muted:#82b69a;
   --accent:#2de36a;
   --accent-2:#1dd65a;
-  --glow:0 0 24px rgba(45,227,106,.35), 0 0 4px rgba(45,227,106,.6) inset;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
 body{
-  margin:0; background:var(--bg); color:var(--txt);
+  margin:0;background:#000;color:var(--txt);
   font-family:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden
 }
-a{color:inherit;text-decoration:none}
-.container{position:relative; min-height:100vh; isolation:isolate}
-#matrix-bg{
-  position:fixed; inset:0; z-index:-2; display:block; background:#000;
-}
+a{color:inherit}
+#matrix-bg{position:fixed;inset:0;z-index:-2;display:block}
 .grid-overlay{
-  position:fixed; inset:0; z-index:-1;
+  position:fixed;inset:0;z-index:-1;
   background:
     linear-gradient(to right, transparent 0 calc(100% - 1px), var(--line) calc(100% - 1px)) 0 0/80px 100%,
     linear-gradient(to bottom, transparent 0 calc(100% - 1px), var(--line) calc(100% - 1px)) 0 0/100% 80px;
-  mask:linear-gradient(to bottom, rgba(0,0,0,.5), rgba(0,0,0,.1) 30%, transparent);
+  mask:linear-gradient(to bottom, rgba(0,0,0,.6), rgba(0,0,0,.15) 30%, transparent)
 }
-
-.top-header{
-  display:flex; align-items:center; gap:14px;
-  width:min(1100px,92%); margin:28px auto 10px;
-}
+.wrap{position:relative;min-height:100vh;isolation:isolate}
+.top-header{display:flex;align-items:center;gap:14px;width:min(1100px,92%);margin:28px auto 6px}
 .logo{
-  display:flex; align-items:center; gap:12px; padding:8px 12px;
-  border:1px solid #173225; background:linear-gradient(180deg,#07150f 0%,#07140f 100%);
-  border-radius:14px; box-shadow:var(--glow); transition:.25s transform;
+  display:flex;align-items:center;gap:12px;padding:8px 12px;border-radius:14px;
+  background:linear-gradient(180deg,#07150f 0%,#07140f 100%);
+  border:1px solid #173225;box-shadow:0 0 18px rgba(45,227,106,.25)
 }
-.logo:hover{transform:translateY(-1px)}
 .logotop{
-  width:44px;height:44px;display:grid;place-items:center;
-  border-radius:10px; background:radial-gradient(60% 60% at 50% 35%, #123a28 0%, #07140f 65%);
-  border:1px solid #1a3f2b; box-shadow:inset 0 0 18px #0a2619, 0 0 0 3px #0a160f;
+  width:44px;height:44px;display:grid;place-items:center;border-radius:10px;
+  background:radial-gradient(60% 60% at 50% 35%, #123a28 0%, #07140f 65%);
+  border:1px solid #1a3f2b
 }
 .logotop i{font-size:24px;color:var(--accent)}
-.text{
-  font-weight:800; letter-spacing:.6px; font-size:18px;
+.brand{font-weight:800;letter-spacing:.6px;font-size:18px;
   background:linear-gradient(90deg,var(--accent),#baffcb 60%,var(--accent-2));
-  -webkit-background-clip:text; background-clip:text; color:transparent;
-  text-shadow:0 0 10px rgba(45,227,106,.25);
+  -webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 10px rgba(45,227,106,.25)
 }
-
-header{
-  width:min(1100px,92%); margin:6px auto 22px; padding:0 2px;
-}
-h1{
-  margin:0; font-size:clamp(24px,3.6vw,34px);
-  letter-spacing:.4px; font-weight:800;
-  color:#e7ffe9; text-shadow:0 0 14px rgba(45,227,106,.28);
-}
-
+header{width:min(1100px,92%);margin:10px auto 20px}
+h1{margin:0;font-size:clamp(24px,3.6vw,34px);font-weight:800;color:#e7ffe9;text-shadow:0 0 14px rgba(45,227,106,.28)}
 .tool-grid{
-  width:min(1100px,92%); margin:6px auto 60px;
-  display:grid; gap:16px;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  width:min(1100px,92%);margin:6px auto 60px;display:grid;gap:16px;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr))
 }
 .tool-item{
-  position:relative; padding:18px 16px 16px; border-radius:16px;
-  background:var(--card); border:1px solid #173225; backdrop-filter: blur(6px);
-  box-shadow: 0 6px 22px rgba(0,0,0,.35), inset 0 0 0 1px #0c1d14;
-  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-  overflow:hidden;
+  display:flex;flex-direction:column;gap:10px;text-decoration:none;
+  padding:18px 16px;border-radius:16px;background:var(--card);
+  border:1px solid #173225;backdrop-filter:blur(6px);
+  box-shadow:0 6px 22px rgba(0,0,0,.35), inset 0 0 0 1px #0c1d14;
+  transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease
 }
-.tool-item::before{
-  content:""; position:absolute; inset:-1px; border-radius:16px;
-  background:
-    conic-gradient(from 0deg at 50% 50%,
-    transparent 0 30deg, rgba(45,227,106,.18) 60deg 90deg,
-    transparent 120deg 210deg, rgba(45,227,106,.12) 240deg 270deg, transparent 300deg 360deg);
-  filter:blur(10px); opacity:.35; transition:opacity .25s ease;
-}
-.tool-item:hover{transform:translateY(-4px); border-color:#215a3a; box-shadow:0 14px 30px rgba(0,0,0,.45), inset 0 0 0 1px #1b3a2b}
-.tool-item:hover::before{opacity:.65}
-
-.tool-item a{display:flex;flex-direction:column;gap:10px}
+.tool-item:hover{transform:translateY(-4px);border-color:#215a3a;box-shadow:0 14px 30px rgba(0,0,0,.45), inset 0 0 0 1px #1b3a2b}
 .tool-icon{
-  width:44px;height:44px; display:grid; place-items:center; border-radius:10px;
-  background:linear-gradient(180deg,#0f2a20,#0a1b14);
-  border:1px solid #1b3f2d; box-shadow:inset 0 0 18px #0a281a, 0 0 10px rgba(45,227,106,.18);
-  color:var(--accent); font-size:22px;
+  width:44px;height:44px;display:grid;place-items:center;border-radius:10px;
+  background:linear-gradient(180deg,#0f2a20,#0a1b14);border:1px solid #1b3f2d;
+  box-shadow:inset 0 0 18px #0a281a, 0 0 10px rgba(45,227,106,.18);color:var(--accent);font-size:22px
 }
-.tool-item h2{
-  font-size:16px; line-height:1.35; margin:0; color:#e8ffe9; font-weight:700;
-}
-.tool-item p{
-  font-size:13px; line-height:1.6; margin:0; color:var(--muted);
-}
-.tool-item a:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:12px}
-
-.copyright-container{margin:0 0 40px}
-.text-center{ text-align:center; color:#99c6ad; font-size:13px }
-.text-center a{ color:#b9ffd1; text-decoration:underline dotted #3a7c57 1px; text-underline-offset:3px }
-.text-center a:hover{ text-decoration-style:solid }
-
+.tool-item h2{margin:0;font-size:16px;line-height:1.35;font-weight:700;color:#e8ffe9}
+.tool-item p{margin:0;font-size:13px;line-height:1.6;color:var(--muted)}
+.tool-item:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.footer{margin:0 0 40px}
+.text-center{text-align:center;color:#99c6ad;font-size:13px}
+.text-center a{color:#b9ffd1;text-decoration:underline dotted #3a7c57 1px;text-underline-offset:3px}
+.text-center a:hover{text-decoration-style:solid}
 @media (max-width:560px){
-  .logo{padding:8px 10px}
-  .text{font-size:16px}
-  .tool-grid{gap:12px}
-  .tool-item{padding:16px}
+  .logo{padding:8px 10px}.brand{font-size:16px}.tool-grid{gap:12px}.tool-item{padding:16px}
 }
-
-@media (prefers-reduced-motion: reduce){
-  .tool-item,.logo{transition:none}
-}
+@media (prefers-reduced-motion:reduce){.tool-item,.logo{transition:none}}
 </style>
 </head>
 <body>
 <canvas id="matrix-bg" aria-hidden="true"></canvas>
 <div class="grid-overlay" aria-hidden="true"></div>
 
-<div class="container">
+<div class="wrap">
   <div class="top-header">
     <a class="logo" href="https://www.blogspotvn.net" id="logo" aria-label="BlogspotVN.Net">
       <div class="logotop"><i class="fab fa-blogger"></i></div>
-      <div class="text">BlogspotVN.Net</div>
+      <div class="brand">BlogspotVN.Net</div>
     </a>
   </div>
 
   <header><h1>Tổng hợp Tool của Blogspot VN</h1></header>
 
   <section class="tool-grid">
-    <div class="tool-item">
-      <a href="/Link-Generator-Tool.html">
-        <div class="tool-icon"><i class="fas fa-link"></i></div>
-        <h2>Tạo link chèn vào nhận xét Blogspot</h2>
-        <p>Tạo link nhanh để chèn vào phần nhận xét blogspot</p>
-      </a>
-    </div>
+    <a href="/Link-Generator-Tool.html" class="tool-item" aria-label="Tạo link chèn vào nhận xét Blogspot">
+      <div class="tool-icon"><i class="fas fa-link"></i></div>
+      <h2>Tạo link chèn vào nhận xét Blogspot</h2>
+      <p>Tạo link nhanh để chèn vào phần nhận xét blogspot</p>
+    </a>
 
-    <div class="tool-item">
-      <a href="/Tab-Creator-Tool.html">
-        <div class="tool-icon"><i class="far fa-window-maximize"></i></div>
-        <h2>Tab Creator Tool</h2>
-        <p>Công cụ tạo nhanh tab chuyển nội dung</p>
-      </a>
-    </div>
+    <a href="/Tab-Creator-Tool.html" class="tool-item" aria-label="Tab Creator Tool">
+      <div class="tool-icon"><i class="far fa-window-maximize"></i></div>
+      <h2>Tab Creator Tool</h2>
+      <p>Công cụ tạo nhanh tab chuyển nội dung</p>
+    </a>
 
-    <div class="tool-item">
-      <a href="/upload-anh.html">
-        <div class="tool-icon"><i class="fas fa-images"></i></div>
-        <h2>Upload Ảnh</h2>
-        <p>Upload ảnh lên Imgur và lấy link nhanh</p>
-      </a>
-    </div>
+    <a href="/upload-anh.html" class="tool-item" aria-label="Upload Ảnh">
+      <div class="tool-icon"><i class="fas fa-images"></i></div>
+      <h2>Upload Ảnh</h2>
+      <p>Upload ảnh lên Imgur và lấy link nhanh</p>
+    </a>
 
-    <div class="tool-item">
-      <a href="/css-beautify.html">
-        <div class="tool-icon"><i class="fas fa-palette"></i></div>
-        <h2>Làm đẹp cho CSS</h2>
-        <p>Chuẩn hoá & định dạng CSS</p>
-      </a>
-    </div>
+    <a href="/css-beautify.html" class="tool-item" aria-label="Làm đẹp cho CSS">
+      <div class="tool-icon"><i class="fas fa-palette"></i></div>
+      <h2>Làm đẹp cho CSS</h2>
+      <p>Chuẩn hoá & định dạng CSS</p>
+    </a>
 
-    <div class="tool-item">
-      <a href="/js-beautifier.html">
-        <div class="tool-icon"><i class="fab fa-node-js"></i></div>
-        <h2>Làm đẹp cho JS</h2>
-        <p>Định dạng JS dễ đọc – dễ debug</p>
-      </a>
-    </div>
+    <a href="/js-beautifier.html" class="tool-item" aria-label="Làm đẹp cho JS">
+      <div class="tool-icon"><i class="fab fa-node-js"></i></div>
+      <h2>Làm đẹp cho JS</h2>
+      <p>Định dạng JS dễ đọc – dễ debug</p>
+    </a>
 
-    <div class="tool-item">
-      <a href="/html-beautify.html">
-        <div class="tool-icon"><i class="fas fa-code"></i></div>
-        <h2>Làm đẹp cho HTML</h2>
-        <p>Format & căn chỉnh HTML</p>
-      </a>
-    </div>
+    <a href="/html-beautify.html" class="tool-item" aria-label="Làm đẹp cho HTML">
+      <div class="tool-icon"><i class="fas fa-code"></i></div>
+      <h2>Làm đẹp cho HTML</h2>
+      <p>Format & căn chỉnh HTML</p>
+    </a>
 
-    <div class="tool-item">
-      <a href="/chuyen-doi-tu-tieng-viet.html">
-        <div class="tool-icon"><i class="fas fa-font"></i></div>
-        <h2>Chuyển đổi từ Tiếng Việt</h2>
-        <p>HOA, thường, không dấu…</p>
-      </a>
-    </div>
+    <a href="/chuyen-doi-tu-tieng-viet.html" class="tool-item" aria-label="Chuyển đổi từ Tiếng Việt">
+      <div class="tool-icon"><i class="fas fa-font"></i></div>
+      <h2>Chuyển đổi từ Tiếng Việt</h2>
+      <p>HOA, thường, không dấu…</p>
+    </a>
 
-    <div class="tool-item">
-      <a href="/wifi-qr-code-generator.html">
-        <div class="tool-icon"><i class="fas fa-wifi"></i></div>
-        <h2>Tạo mã QR cho Wifi</h2>
-        <p>Kết nối nhanh không lộ mật khẩu</p>
-      </a>
-    </div>
+    <a href="/wifi-qr-code-generator.html" class="tool-item" aria-label="Tạo mã QR cho Wifi">
+      <div class="tool-icon"><i class="fas fa-wifi"></i></div>
+      <h2>Tạo mã QR cho Wifi</h2>
+      <p>Kết nối nhanh không lộ mật khẩu</p>
+    </a>
 
-    <div class="tool-item">
-      <a href="/GeneratorTable.html">
-        <div class="tool-icon"><i class="fas fa-table"></i></div>
-        <h2>Công cụ tạo bảng HTML</h2>
-        <p>Tạo bảng HTML trong vài giây</p>
-      </a>
-    </div>
+    <a href="/GeneratorTable.html" class="tool-item" aria-label="Công cụ tạo bảng HTML">
+      <div class="tool-icon"><i class="fas fa-table"></i></div>
+      <h2>Công cụ tạo bảng HTML</h2>
+      <p>Tạo bảng HTML trong vài giây</p>
+    </a>
 
-    <div class="tool-item">
-      <a href="/Font-Awesome-Preview.html">
-        <div class="tool-icon"><i class="fab fa-font-awesome"></i></div>
-        <h2>Font Awesome V5 Preview</h2>
-        <p>Xem trước & copy class icon nhanh</p>
-      </a>
-    </div>
+    <a href="/Font-Awesome-Preview.html" class="tool-item" aria-label="Font Awesome V5 Preview">
+      <div class="tool-icon"><i class="fab fa-font-awesome"></i></div>
+      <h2>Font Awesome V5 Preview</h2>
+      <p>Xem trước & copy class icon nhanh</p>
+    </a>
 
-    <div class="tool-item">
-      <a href="/CSS-sprites-tool.html">
-        <div class="tool-icon"><i class="far fa-images"></i></div>
-        <h2>CSS sprites tool</h2>
-        <p>Tạo Image Sprite tối ưu tải</p>
-      </a>
-    </div>
+    <a href="/CSS-sprites-tool.html" class="tool-item" aria-label="CSS sprites tool">
+      <div class="tool-icon"><i class="far fa-images"></i></div>
+      <h2>CSS sprites tool</h2>
+      <p>Tạo Image Sprite tối ưu tải</p>
+    </a>
   </section>
 
-  <div class="copyright-container">
+  <div class="footer">
     <p class="text-center">© <span id="current-year"></span> by
       <a href="https://www.blogspotvn.net/">BlogspotVN.Net</a>
     </p>
@@ -241,33 +174,28 @@ h1{
 
 <script>
 document.getElementById('current-year').textContent=new Date().getFullYear();
-
 (function(){
-  const c=document.getElementById('matrix-bg');
-  const ctx=c.getContext('2d');
-  let w,h,cols,ypos,chars='アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  function resize(){
-    w=c.width=window.innerWidth; h=c.height=window.innerHeight;
-    const fontSize=Math.max(14,Math.floor(w>1200?18:14));
-    ctx.font=fontSize+'px JetBrains Mono, monospace';
-    cols=Math.floor(w/fontSize);
-    ypos=Array(cols).fill(0);
+  const c=document.getElementById('matrix-bg'),x=c.getContext('2d');
+  let w,h,cols,y,fs,chars='アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  function R(){
+    w=c.width=innerWidth;h=c.height=innerHeight;
+    fs=Math.max(14,Math.floor(w>1200?18:14));
+    x.font=fs+'px JetBrains Mono, monospace';
+    cols=Math.floor(w/fs);y=Array(cols).fill(0);
   }
-  window.addEventListener('resize',resize,{passive:true});
-  resize();
-  function draw(){
-    ctx.fillStyle='rgba(0,0,0,0.08)';
-    ctx.fillRect(0,0,w,h);
-    ctx.fillStyle='#2de36a';
+  addEventListener('resize',R,{passive:true});R();
+  function D(){
+    x.fillStyle='rgba(0,0,0,0.08)';x.fillRect(0,0,w,h);
+    x.fillStyle='#2de36a';
     for(let i=0;i<cols;i++){
-      const text=chars[Math.floor(Math.random()*chars.length)];
-      const x=i*parseInt(ctx.font); const y=ypos[i]*parseInt(ctx.font);
-      ctx.fillText(text,x,y);
-      if(y>h && Math.random()>0.975) ypos[i]=0; else ypos[i]++;
+      const t=chars[Math.floor(Math.random()*chars.length)];
+      const X=i*fs,Y=y[i]*fs;
+      x.fillText(t,X,Y);
+      if(Y>h && Math.random()>0.975) y[i]=0; else y[i]++;
     }
-    requestAnimationFrame(draw);
+    requestAnimationFrame(D);
   }
-  draw();
+  D();
 })();
 </script>
 </body>
